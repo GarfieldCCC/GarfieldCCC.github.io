@@ -1111,6 +1111,8 @@ body::before {
   text-align: center;
   color: #f5f6f7;
   background-color: #2d2e30;
+  z-index: 0;
+  background: url("https://i.loli.net/2021/03/10/wSEt3gv9r8KzDA6.jpg") no-repeat center/cover;
 }
 .footer a {
   color: #c20808;
@@ -2295,6 +2297,9 @@ body::before {
 }
 .back2top__icon:hover {
   color: #fc6423;
+}
+a.fancybox {
+  cursor: zoom-in;
 }
 .zoomimg-mask {
   position: fixed;
