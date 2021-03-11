@@ -74,6 +74,13 @@
 
   
   <url>
+    <loc>http://example.com/tags/%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2021-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/GitHub/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
@@ -88,14 +95,21 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://example.com/tags/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://example.com/tags/iOS/</loc>
+    <lastmod>2021-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E5%BE%AE%E4%BF%A1/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -104,14 +118,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/Git/</loc>
+    <loc>http://example.com/categories/Linux/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Linux/</loc>
+    <loc>http://example.com/categories/Git/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -125,14 +139,21 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://example.com/categories/MySQL/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/MySQL/</loc>
+    <loc>http://example.com/categories/iOS/</loc>
+    <lastmod>2021-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
