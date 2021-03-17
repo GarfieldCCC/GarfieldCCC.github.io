@@ -2,91 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/%E7%AB%99%E7%82%B9.html</loc>
+    <loc>http://garfielder.com/%E7%AB%99%E7%82%B9.html</loc>
     
     <lastmod>2021-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/3af7fcdd.html</loc>
+    <loc>http://garfielder.com/post/3af7fcdd.html</loc>
     
     <lastmod>2021-03-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/a92f9037.html</loc>
+    <loc>http://garfielder.com/post/a92f9037.html</loc>
     
     <lastmod>2021-03-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/9f1ab931.html</loc>
+    <loc>http://garfielder.com/post/9f1ab931.html</loc>
     
     <lastmod>2021-03-16</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/9d25bc33.html</loc>
+    <loc>http://garfielder.com/post/9d25bc33.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/1f905c2f.html</loc>
+    <loc>http://garfielder.com/post/1f905c2f.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/4a17b156.html</loc>
+    <loc>http://garfielder.com/post/4a17b156.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/fcf19b50.html</loc>
+    <loc>http://garfielder.com/post/fcf19b50.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/5e63e1c2.html</loc>
+    <loc>http://garfielder.com/post/5e63e1c2.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/af6628ae.html</loc>
+    <loc>http://garfielder.com/post/af6628ae.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/post/76507812.html</loc>
+    <loc>http://garfielder.com/post/76507812.html</loc>
     
     <lastmod>2021-03-12</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>http://garfielder.com/tags/index.html</loc>
     
     <lastmod>2021-03-05</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>http://garfielder.com/categories/index.html</loc>
     
     <lastmod>2021-03-05</lastmod>
     
@@ -94,7 +94,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://garfielder.com/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -102,70 +102,70 @@
 
   
   <url>
-    <loc>http://example.com/tags/GitHub/</loc>
+    <loc>http://garfielder.com/tags/GitHub/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E7%BC%96%E7%A0%81/</loc>
+    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Hexo/</loc>
+    <loc>http://garfielder.com/tags/Hexo/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://garfielder.com/tags/%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://garfielder.com/tags/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/MQTT/</loc>
+    <loc>http://garfielder.com/tags/MQTT/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Python/</loc>
+    <loc>http://garfielder.com/tags/Python/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/iOS/</loc>
+    <loc>http://garfielder.com/tags/iOS/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%BE%AE%E4%BF%A1/</loc>
+    <loc>http://garfielder.com/tags/%E5%BE%AE%E4%BF%A1/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -174,49 +174,49 @@
 
   
   <url>
-    <loc>http://example.com/categories/Git/</loc>
+    <loc>http://garfielder.com/categories/Git/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Linux/</loc>
+    <loc>http://garfielder.com/categories/Linux/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>http://garfielder.com/categories/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/iOS/</loc>
+    <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://garfielder.com/categories/%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
