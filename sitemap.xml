@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garfielder.com/post/df41aea9.html</loc>
+    
+    <lastmod>2021-03-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/%E7%AB%99%E7%82%B9.html</loc>
     
     <lastmod>2021-03-17</lastmod>
@@ -102,20 +109,6 @@
 
   
   <url>
-    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
-    <lastmod>2021-03-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Hexo/</loc>
-    <lastmod>2021-03-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/GitHub/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
@@ -124,6 +117,20 @@
   
   <url>
     <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/Hexo/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -171,17 +178,24 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://garfielder.com/tags/Linux/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://garfielder.com/categories/Git/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Git/</loc>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -202,7 +216,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -216,7 +230,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/iOS/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
