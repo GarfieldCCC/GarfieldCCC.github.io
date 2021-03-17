@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garfielder.com/post/833438b6.html</loc>
+    
+    <lastmod>2021-03-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/fcf19b50.html</loc>
+    
+    <lastmod>2021-03-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/post/df41aea9.html</loc>
     
     <lastmod>2021-03-17</lastmod>
@@ -58,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/fcf19b50.html</loc>
-    
-    <lastmod>2021-03-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/post/5e63e1c2.html</loc>
     
     <lastmod>2021-03-12</lastmod>
@@ -107,6 +114,27 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://garfielder.com/tags/CentOS/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/Linux/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/VMWare/</loc>
+    <lastmod>2021-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://garfielder.com/tags/GitHub/</loc>
@@ -178,14 +206,14 @@
     <priority>0.6</priority>
   </url>
   
+
+  
   <url>
-    <loc>http://garfielder.com/tags/Linux/</loc>
+    <loc>http://garfielder.com/categories/Linux/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
-  
-
   
   <url>
     <loc>http://garfielder.com/categories/Git/</loc>
@@ -202,7 +230,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Linux/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -224,13 +252,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2021-03-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
