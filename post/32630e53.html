@@ -1,0 +1,550 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="CI1jqQ3Mhk0QSn61VHhjaeopJ0djgDy0IU_65qfQqiQ"><meta name="msvalidate.01" content="87144E235564BBBA9FFE3F19C36EEC0A"><meta name="baidu-site-verification" content="code-2yY2VTJ1Zi"><meta name="360-site-verification" content="479be47aa29500f8aeb1b40a9a67026f"><meta name="description" content="Vim的入门指南">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim使用指南">
+<meta property="og:url" content="http://garfielder.com/post/32630e53.html">
+<meta property="og:site_name" content="Garfield Blog">
+<meta property="og:description" content="Vim的入门指南">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-19T07:09:25.000Z">
+<meta property="article:modified_time" content="2021-03-19T07:29:24.625Z">
+<meta property="article:author" content="Garfield">
+<meta property="article:tag" content="Vim">
+<meta name="twitter:card" content="summary"><title>Vim使用指南 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/32630e53.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?225e5d3b94db0afd1e42a378e377cbfb';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Vim使用指南</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-03-19</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-03-19</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.5k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">9分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h3 id="何为Vim"   >
+          <a href="#何为Vim" class="heading-link"><i class="fas fa-link"></i></a><a href="#何为Vim" class="headerlink" title="何为Vim"></a>何为Vim</h3>
+      <p>Vim是从 vi 发展出来的一个文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。</p>
+
+        <h3 id="三种模式"   >
+          <a href="#三种模式" class="heading-link"><i class="fas fa-link"></i></a><a href="#三种模式" class="headerlink" title="三种模式"></a>三种模式</h3>
+      <p>基本上vi/vim共分为三种模式，分别是</p>
+<blockquote>
+<p>命令模式（Command mode）</p>
+<p>输入模式（Insert mode）</p>
+<p>底线命令模式（Last line mode）</p>
+</blockquote>
+
+        <h4 id="命令模式（Command-mode）"   >
+          <a href="#命令模式（Command-mode）" class="heading-link"><i class="fas fa-link"></i></a><a href="#命令模式（Command-mode）" class="headerlink" title="命令模式（Command mode）"></a>命令模式（Command mode）</h4>
+      <p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+<p>以下是常用的几个命令：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i 切换到输入模式，以输入字符。</span><br><span class="line">x 删除当前光标所在处的字符。</span><br><span class="line">: 切换到底线命令模式，以在最底一行输入命令。</span><br></pre></td></tr></table></div></figure>
+
+<p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+
+        <h4 id="输入模式（Insert-mode）"   >
+          <a href="#输入模式（Insert-mode）" class="heading-link"><i class="fas fa-link"></i></a><a href="#输入模式（Insert-mode）" class="headerlink" title="输入模式（Insert mode）"></a>输入模式（Insert mode）</h4>
+      <p>在命令模式下按下i就进入了输入模式。</p>
+<p>在输入模式中，可以使用以下按键：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">字符按键以及Shift组合，输入字符</span><br><span class="line">ENTER，回车键，换行</span><br><span class="line">BACK SPACE，退格键，删除光标前一个字符</span><br><span class="line">DEL，删除键，删除光标后一个字符</span><br><span class="line">方向键，在文本中移动光标</span><br><span class="line">HOME&#x2F;END，移动光标到行首&#x2F;行尾</span><br><span class="line">Page Up&#x2F;Page Down，上&#x2F;下翻页</span><br><span class="line">Insert，切换光标为输入&#x2F;替换模式，光标将变成竖线&#x2F;下划线</span><br><span class="line">ESC，退出输入模式，切换到命令模式</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="底线命令模式（Last-line-mode）"   >
+          <a href="#底线命令模式（Last-line-mode）" class="heading-link"><i class="fas fa-link"></i></a><a href="#底线命令模式（Last-line-mode）" class="headerlink" title="底线命令模式（Last line mode）"></a>底线命令模式（Last line mode）</h4>
+      <p>在命令模式下按下:（英文冒号）就进入了底线命令模式。</p>
+<p>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+<p>在底线命令模式中，基本的命令有（已经省略了冒号）：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q 退出程序</span><br><span class="line">w 保存文件</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="基础命令"   >
+          <a href="#基础命令" class="heading-link"><i class="fas fa-link"></i></a><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3>
+      <p>接下来简单介绍一些基础命令。</p>
+
+        <h4 id="打开、保存、关闭文件"   >
+          <a href="#打开、保存、关闭文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#打开、保存、关闭文件" class="headerlink" title="打开、保存、关闭文件"></a>打开、保存、关闭文件</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi filename           &#x2F;&#x2F;打开filename文件</span><br><span class="line">:w                    &#x2F;&#x2F;保存文件</span><br><span class="line">:w vpser.net          &#x2F;&#x2F;保存至vpser.net文件</span><br><span class="line">:q                    &#x2F;&#x2F;退出编辑器，如果文件已修改请使用下面的命令</span><br><span class="line">:q!                   &#x2F;&#x2F;退出编辑器，且不保存</span><br><span class="line">:wq                   &#x2F;&#x2F;退出编辑器，且保存文件</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="插入文本或行"   >
+          <a href="#插入文本或行" class="heading-link"><i class="fas fa-link"></i></a><a href="#插入文本或行" class="headerlink" title="插入文本或行"></a>插入文本或行</h4>
+      <p>vi命令模式下使用，执行下面命令后将进入插入模式，按<code>ESC</code>键可退出插入模式</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a       &#x2F;&#x2F;在当前光标位置的右边添加文本</span><br><span class="line">i       &#x2F;&#x2F;在当前光标位置的左边添加文本</span><br><span class="line">A       &#x2F;&#x2F;在当前行的末尾位置添加文本</span><br><span class="line">I       &#x2F;&#x2F;在当前行的开始处添加文本(非空字符的行首)</span><br><span class="line">O       &#x2F;&#x2F;在当前行的上面新建一行</span><br><span class="line">o       &#x2F;&#x2F;在当前行的下面新建一行</span><br><span class="line">R       &#x2F;&#x2F;替换(覆盖)当前光标位置及后面的若干文本</span><br><span class="line">J       &#x2F;&#x2F;合并光标所在行及下一行为一行(依然在命令模式)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="移动光标"   >
+          <a href="#移动光标" class="heading-link"><i class="fas fa-link"></i></a><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h4>
+      <p>vi命令模式下使用</p>
+<ol>
+<li>使用上下左右方向键</li>
+<li>命令模式下：h 向左、j 向下 、k 向上、l 向右</li>
+<li>空格键 向右、Backspace 向左、Enter 移动到下一行首、- 移动到上一行首</li>
+</ol>
+
+        <h4 id="删除、恢复字符或行"   >
+          <a href="#删除、恢复字符或行" class="heading-link"><i class="fas fa-link"></i></a><a href="#删除、恢复字符或行" class="headerlink" title="删除、恢复字符或行"></a>删除、恢复字符或行</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x         &#x2F;&#x2F;删除当前字符</span><br><span class="line">nx        &#x2F;&#x2F;删除从光标开始的n个字符</span><br><span class="line">dd        &#x2F;&#x2F;删除当前行</span><br><span class="line">ndd       &#x2F;&#x2F;向下删除当前行在内的n行</span><br><span class="line">u         &#x2F;&#x2F;撤销上一步操作</span><br><span class="line">U         &#x2F;&#x2F;撤销对当前行的所有操作</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="搜索"   >
+          <a href="#搜索" class="heading-link"><i class="fas fa-link"></i></a><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;vpser      &#x2F;&#x2F;向光标下搜索vpser字符串</span><br><span class="line">?vpser      &#x2F;&#x2F;向光标上搜索vpser字符串</span><br><span class="line">n           &#x2F;&#x2F;向下搜索前一个搜素动作</span><br><span class="line">N           &#x2F;&#x2F;向上搜索前一个搜索动作</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="跳至指定行"   >
+          <a href="#跳至指定行" class="heading-link"><i class="fas fa-link"></i></a><a href="#跳至指定行" class="headerlink" title="跳至指定行"></a>跳至指定行</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n+          &#x2F;&#x2F;向下跳n行</span><br><span class="line">n-          &#x2F;&#x2F;向上跳n行</span><br><span class="line">nG          &#x2F;&#x2F;跳到行号为n的行</span><br><span class="line">G           &#x2F;&#x2F;跳至文件的底部</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="设置行号"   >
+          <a href="#设置行号" class="heading-link"><i class="fas fa-link"></i></a><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set  nu     &#x2F;&#x2F;显示行号</span><br><span class="line">:set nonu    &#x2F;&#x2F;取消显示行号</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="复制、粘贴"   >
+          <a href="#复制、粘贴" class="heading-link"><i class="fas fa-link"></i></a><a href="#复制、粘贴" class="headerlink" title="复制、粘贴"></a>复制、粘贴</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy      &#x2F;&#x2F;将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy     &#x2F;&#x2F;将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw      &#x2F;&#x2F;复制从光标开始到词尾的字符。</span><br><span class="line">nyw     &#x2F;&#x2F;复制从光标开始的n个单词。</span><br><span class="line">y^      &#x2F;&#x2F;复制从光标到行首的内容。  VPS侦探</span><br><span class="line">y$      &#x2F;&#x2F;复制从光标到行尾的内容。</span><br><span class="line">p       &#x2F;&#x2F;粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。</span><br><span class="line">P       &#x2F;&#x2F;粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="替换"   >
+          <a href="#替换" class="heading-link"><i class="fas fa-link"></i></a><a href="#替换" class="headerlink" title="替换"></a>替换</h4>
+      <p>vi命令模式下使用</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:s&#x2F;old&#x2F;new           &#x2F;&#x2F;用new替换行中首次出现的old</span><br><span class="line">:s&#x2F;old&#x2F;new&#x2F;g         &#x2F;&#x2F;用new替换行中所有的old</span><br><span class="line">:n,m s&#x2F;old&#x2F;new&#x2F;g     &#x2F;&#x2F;用new替换从n到m行里所有的old</span><br><span class="line">:%s&#x2F;old&#x2F;new&#x2F;g        &#x2F;&#x2F;用new替换当前文件里所有的old</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="编辑其他文件"   >
+          <a href="#编辑其他文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#编辑其他文件" class="headerlink" title="编辑其他文件"></a>编辑其他文件</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:e otherfilename     &#x2F;&#x2F;编辑文件名为otherfilename的文件。</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="修改文件格式"   >
+          <a href="#修改文件格式" class="heading-link"><i class="fas fa-link"></i></a><a href="#修改文件格式" class="headerlink" title="修改文件格式"></a>修改文件格式</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set fileformat&#x3D;unix   &#x2F;&#x2F;将文件修改为unix格式，如win下面的文本文件在linux下会出现^M。</span><br></pre></td></tr></table></div></figure></div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/32630e53.html">http://garfielder.com/post/32630e53.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/Vim/">Vim</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/127d43b1.html"><span class="paginator-prev__text">CentOS必备配置</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E4%B8%BAVim"><span class="toc-number">1.</span> <span class="toc-text">
+          何为Vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">
+          三种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%88Command-mode%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">
+          命令模式（Command mode）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F%EF%BC%88Insert-mode%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">
+          输入模式（Insert mode）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%95%E7%BA%BF%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%88Last-line-mode%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">
+          底线命令模式（Last line mode）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">
+          基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E3%80%81%E4%BF%9D%E5%AD%98%E3%80%81%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">
+          打开、保存、关闭文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%96%87%E6%9C%AC%E6%88%96%E8%A1%8C"><span class="toc-number">3.2.</span> <span class="toc-text">
+          插入文本或行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-number">3.3.</span> <span class="toc-text">
+          移动光标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E3%80%81%E6%81%A2%E5%A4%8D%E5%AD%97%E7%AC%A6%E6%88%96%E8%A1%8C"><span class="toc-number">3.4.</span> <span class="toc-text">
+          删除、恢复字符或行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2"><span class="toc-number">3.5.</span> <span class="toc-text">
+          搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E8%87%B3%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="toc-number">3.6.</span> <span class="toc-text">
+          跳至指定行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A1%8C%E5%8F%B7"><span class="toc-number">3.7.</span> <span class="toc-text">
+          设置行号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E3%80%81%E7%B2%98%E8%B4%B4"><span class="toc-number">3.8.</span> <span class="toc-text">
+          复制、粘贴</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-number">3.9.</span> <span class="toc-text">
+          替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%85%B6%E4%BB%96%E6%96%87%E4%BB%B6"><span class="toc-number">3.10.</span> <span class="toc-text">
+          编辑其他文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.11.</span> <span class="toc-text">
+          修改文件格式</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://i.loli.net/2021/03/09/b1rHUNsg9GdK2S5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">向上向善</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/GarfieldCCC" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/e8214c6701c6" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/garfield_598ab2e99b0c5" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/garfield-21-38" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Garfield</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'http://garfielder.com/post/32630e53.html', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: '7QW51uURwmFEJVmXD4UC943o-gzGzoHsz',
+    appKey: 'UTbCV1BcSh71YxpBEu7wG05I',
+    notify: true,
+    verify: true,
+    placeholder: 'Comment...',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: '' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (true) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
