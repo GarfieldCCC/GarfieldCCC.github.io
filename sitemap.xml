@@ -123,6 +123,20 @@
 
   
   <url>
+    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
+    <lastmod>2021-03-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/Hexo/</loc>
+    <lastmod>2021-03-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/CentOS/</loc>
     <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
@@ -152,20 +166,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2021-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
-    <lastmod>2021-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Hexo/</loc>
     <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -216,6 +216,13 @@
 
   
   <url>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-03-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/Linux/</loc>
     <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
@@ -230,21 +237,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
-    <lastmod>2021-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2021-03-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -258,7 +258,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/iOS/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-03-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
