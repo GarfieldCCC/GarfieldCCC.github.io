@@ -6,7 +6,7 @@
 <meta property="og:description" content="Vim的入门指南">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-19T07:09:25.000Z">
-<meta property="article:modified_time" content="2021-04-23T06:08:31.723Z">
+<meta property="article:modified_time" content="2021-04-23T07:28:07.732Z">
 <meta property="article:author" content="Garfield">
 <meta property="article:tag" content="Vim">
 <meta name="twitter:card" content="summary"><title>Vim使用指南 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/32630e53.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
@@ -135,7 +135,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
         <h4 id="复制、粘贴"   >
           <a href="#复制、粘贴" class="heading-link"><i class="fas fa-link"></i></a><a href="#复制、粘贴" class="headerlink" title="复制、粘贴"></a>复制、粘贴</h4>
       <p>vi命令模式下使用</p>
-<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy      &#x2F;&#x2F;将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy     &#x2F;&#x2F;将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw      &#x2F;&#x2F;复制从光标开始到词尾的字符。</span><br><span class="line">nyw     &#x2F;&#x2F;复制从光标开始的n个单词。</span><br><span class="line">y^      &#x2F;&#x2F;复制从光标到行首的内容。  VPS侦探</span><br><span class="line">y$      &#x2F;&#x2F;复制从光标到行尾的内容。</span><br><span class="line">p       &#x2F;&#x2F;粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。</span><br><span class="line">P       &#x2F;&#x2F;粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy      &#x2F;&#x2F;将当前行复制到缓存区，也可以用 &quot;ayy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">nyy     &#x2F;&#x2F;将当前行向下n行复制到缓冲区，也可以用 &quot;anyy 复制，&quot;a 为缓冲区，a也可以替换为a到z的任意字母，可以完成多个复制任务。</span><br><span class="line">yw      &#x2F;&#x2F;复制从光标开始到词尾的字符。</span><br><span class="line">nyw     &#x2F;&#x2F;复制从光标开始的n个单词。</span><br><span class="line">y^      &#x2F;&#x2F;复制从光标到行首的内容。</span><br><span class="line">y$      &#x2F;&#x2F;复制从光标到行尾的内容。</span><br><span class="line">p       &#x2F;&#x2F;粘贴剪切板里的内容在光标后，如果使用了前面的自定义缓冲区，建议使用&quot;ap 进行粘贴。</span><br><span class="line">P       &#x2F;&#x2F;粘贴剪切板里的内容在光标前，如果使用了前面的自定义缓冲区，建议使用&quot;aP 进行粘贴。</span><br></pre></td></tr></table></div></figure>
 
 
         <h4 id="替换"   >
