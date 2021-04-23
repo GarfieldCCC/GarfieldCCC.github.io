@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/04/22/UBdfhpjSm61ZTO5.png">
 <meta property="og:image" content="https://i.loli.net/2021/04/22/VHiQB2PjLGZ7f4g.png">
 <meta property="article:published_time" content="2021-04-21T08:04:49.000Z">
-<meta property="article:modified_time" content="2021-04-22T06:58:06.875Z">
+<meta property="article:modified_time" content="2021-04-23T06:05:15.996Z">
 <meta property="article:author" content="Garfield">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="CentOS">
@@ -58,17 +58,17 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">CentOS目录结构详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-04-22</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">787</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">4分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">CentOS目录结构详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-04-21</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-04-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">787</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">4分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
         <h3 id="总体概述"   >
           <a href="#总体概述" class="heading-link"><i class="fas fa-link"></i></a><a href="#总体概述" class="headerlink" title="总体概述"></a>总体概述</h3>
       <p>Linux与Windows的目录有别于：Windows可以分很多个盘，Linux只有一个根目录/，所有文件夹都在根目录下</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/UZFJM3A9gTjfsw8.png"  alt="image-20210422132350742">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/UZFJM3A9gTjfsw8.png"  alt="结构图">
       </p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/FOXQYLiURt7dnoI.png"  alt="image-20210422132512056">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/FOXQYLiURt7dnoI.png"  alt="目录图">
       </p>
 
         <h3 id="详细介绍"   >
@@ -79,7 +79,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>Binary的缩写，这个目录存放着经常使用的命令；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/n4WSHdgOorwhvy6.png"  alt="image-20210422132745774">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/n4WSHdgOorwhvy6.png"  alt="bin">
       </p>
 
         <h4 id="boot启动文件夹"   >
@@ -87,7 +87,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/G9A8MYDUBjQ7g1F.png"  alt="image-20210422132900246">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/G9A8MYDUBjQ7g1F.png"  alt="boot">
       </p>
 
         <h4 id="dev设备文件夹"   >
@@ -95,7 +95,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>设备（device）的缩写，目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/1Xt57S49cCOpUkx.png"  alt="image-20210422133333593">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/1Xt57S49cCOpUkx.png"  alt="dev">
       </p>
 
         <h4 id="etc配置文件夹"   >
@@ -103,7 +103,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>用来存放所有的系统管理所需要的配置文件和子目录；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/VnUJ4joym5A678t.png"  alt="image-20210422140234485">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/VnUJ4joym5A678t.png"  alt="etc">
       </p>
 
         <h4 id="home家目录"   >
@@ -111,7 +111,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/wrEZIJFnLpisKQm.png" >
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/wrEZIJFnLpisKQm.png"  alt="home">
       </p>
 
         <h4 id="lib动态连接共享库"   >
@@ -119,7 +119,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>这里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件，几乎所有的应用程序都需要用到这些共享库；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/mxAsNzo9ZyRM7OH.png"  alt="image-20210422140513376">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/mxAsNzo9ZyRM7OH.png"  alt="lib">
       </p>
 
         <h4 id="media"   >
@@ -139,7 +139,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/o4iXgOlrk17KGQW.png"  alt="image-20210422140805465">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/o4iXgOlrk17KGQW.png"  alt="proc">
       </p>
 
         <h4 id="root系统管理员目录"   >
@@ -155,7 +155,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>存放的是系统管理员使用的系统管理程序</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/W4XYT29ZCpSdUFz.png"  alt="image-20210422141036567">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/W4XYT29ZCpSdUFz.png"  alt="sbin">
       </p>
 
         <h4 id="srv"   >
@@ -169,7 +169,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建；</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/UBdfhpjSm61ZTO5.png"  alt="image-20210422141201874">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/UBdfhpjSm61ZTO5.png"  alt="sys">
       </p>
 
         <h4 id="tmp"   >
@@ -185,7 +185,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/VHiQB2PjLGZ7f4g.png"  alt="image-20210422141347215">
+          src="/images/loading.svg" data-src="https://i.loli.net/2021/04/22/VHiQB2PjLGZ7f4g.png"  alt="var">
       </p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/38d92910.html">http://garfielder.com/post/38d92910.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/Linux/">Linux</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/CentOS/">CentOS</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/916ff986.html"><span class="paginator-prev__text">JetBrains全家桶问题收集和解决</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">
           总体概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">
