@@ -305,14 +305,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/VMWare/</loc>
+    <loc>http://garfielder.com/tags/Dash/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Dash/</loc>
+    <loc>http://garfielder.com/tags/VMWare/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -326,35 +326,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/GitHub/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/Go/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Hexo/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -445,28 +417,14 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Vim/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/Vue/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/win10/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/cmd/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E7%AB%AF%E5%8F%A3/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,7 +452,49 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Vim/</loc>
+    <loc>http://garfielder.com/tags/win10/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/cmd/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E7%AB%AF%E5%8F%A3/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/GitHub/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/Hexo/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -531,13 +531,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Git/</loc>
-    <lastmod>2021-05-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/categories/Go/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
@@ -566,6 +559,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/categories/Vim/</loc>
+    <lastmod>2021-05-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
@@ -587,7 +587,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Vim/</loc>
+    <loc>http://garfielder.com/categories/Git/</loc>
     <lastmod>2021-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
