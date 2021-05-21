@@ -431,6 +431,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Vim/</loc>
+    <lastmod>2021-05-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/Typora/</loc>
     <lastmod>2021-05-21</lastmod>
     <changefreq>daily</changefreq>
@@ -446,13 +453,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/SM-MS/</loc>
-    <lastmod>2021-05-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Vim/</loc>
     <lastmod>2021-05-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
