@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://garfielder.com/post/f8d43806.html</loc>
+    <loc>http://garfielder.com/post/2525d526.html</loc>
     
     <lastmod>2021-05-22</lastmod>
     
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/2525d526.html</loc>
+    <loc>http://garfielder.com/post/f8d43806.html</loc>
     
     <lastmod>2021-05-22</lastmod>
     
@@ -431,6 +431,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Vim/</loc>
+    <lastmod>2021-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
@@ -453,13 +460,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/SM-MS/</loc>
-    <lastmod>2021-05-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Vim/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -580,14 +580,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Python/</loc>
+    <loc>http://garfielder.com/categories/Vim/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Vim/</loc>
+    <loc>http://garfielder.com/categories/Python/</loc>
     <lastmod>2021-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
