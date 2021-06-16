@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garfielder.com/post/7f67377d.html</loc>
+    
+    <lastmod>2021-06-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/post/b3f73e98.html</loc>
     
     <lastmod>2021-06-16</lastmod>
@@ -17,13 +24,6 @@
   
   <url>
     <loc>http://garfielder.com/post/9daccfd.html</loc>
-    
-    <lastmod>2021-06-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/7f67377d.html</loc>
     
     <lastmod>2021-06-11</lastmod>
     
@@ -741,14 +741,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <loc>http://garfielder.com/categories/%E8%8B%A5%E4%BE%9D/</loc>
     <lastmod>2021-06-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%8B%A5%E4%BE%9D/</loc>
+    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2021-06-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
