@@ -2,7 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://garfielder.com/post/f05fb1b7.html</loc>
+    <loc>http://garfielder.com/post/9e3bff48.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/9daccfd.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/a24d1725.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/4b456297.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/2e09b3e9.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/1681b738.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/ce36139.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/b3f73e98.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/bce806cc.html</loc>
     
     <lastmod>2021-06-24</lastmod>
     
@@ -10,6 +66,13 @@
   
   <url>
     <loc>http://garfielder.com/post/1bde0d35.html</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/f05fb1b7.html</loc>
     
     <lastmod>2021-06-24</lastmod>
     
@@ -58,28 +121,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/b3f73e98.html</loc>
-    
-    <lastmod>2021-06-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/9daccfd.html</loc>
-    
-    <lastmod>2021-06-11</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/post/3739380.html</loc>
-    
-    <lastmod>2021-06-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/bce806cc.html</loc>
     
     <lastmod>2021-06-11</lastmod>
     
@@ -93,35 +135,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/9e3bff48.html</loc>
-    
-    <lastmod>2021-06-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/2e09b3e9.html</loc>
-    
-    <lastmod>2021-06-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/1681b738.html</loc>
-    
-    <lastmod>2021-05-24</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/post/f0c1e91f.html</loc>
-    
-    <lastmod>2021-05-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/4b456297.html</loc>
     
     <lastmod>2021-05-24</lastmod>
     
@@ -220,20 +234,6 @@
   
   <url>
     <loc>http://garfielder.com/post/6240db98.html</loc>
-    
-    <lastmod>2021-04-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/a24d1725.html</loc>
-    
-    <lastmod>2021-04-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/ce36139.html</loc>
     
     <lastmod>2021-04-23</lastmod>
     
@@ -403,6 +403,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Dash/</loc>
+    <lastmod>2021-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/CentOS/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
@@ -411,13 +418,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/VMWare/</loc>
-    <lastmod>2021-06-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Dash/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -445,6 +445,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Go/</loc>
+    <lastmod>2021-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
@@ -453,13 +460,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/Hexo/</loc>
-    <lastmod>2021-06-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Go/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -671,14 +671,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Go/</loc>
+    <loc>http://garfielder.com/categories/Dash/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Dash/</loc>
+    <loc>http://garfielder.com/categories/Go/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -699,6 +699,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/categories/Windows/</loc>
+    <lastmod>2021-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/Python/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
@@ -707,13 +714,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/Vim/</loc>
-    <lastmod>2021-06-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/Windows/</loc>
     <lastmod>2021-06-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
