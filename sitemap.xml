@@ -424,14 +424,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Dash/</loc>
+    <loc>http://garfielder.com/tags/VMWare/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/VMWare/</loc>
+    <loc>http://garfielder.com/tags/Dash/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -557,6 +557,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Vim/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/Typora/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
@@ -572,13 +579,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/SM-MS/</loc>
-    <lastmod>2021-06-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Vim/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://garfielder.com/categories/nextcloud/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/nextcloud/</loc>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -734,13 +734,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Windows/</loc>
-    <lastmod>2021-06-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/categories/Vue/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
@@ -748,7 +741,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <loc>http://garfielder.com/categories/Windows/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -777,6 +770,13 @@
   
   <url>
     <loc>http://garfielder.com/categories/%E8%8B%A5%E4%BE%9D/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
