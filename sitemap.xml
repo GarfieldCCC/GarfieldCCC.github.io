@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://garfielder.com/post/a1f1da6f.html</loc>
+    <loc>http://garfielder.com/post/d3ed757b.html</loc>
     
     <lastmod>2021-07-08</lastmod>
     
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/d3ed757b.html</loc>
+    <loc>http://garfielder.com/post/a1f1da6f.html</loc>
     
     <lastmod>2021-07-08</lastmod>
     
@@ -438,13 +438,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/MySQL/</loc>
-    <lastmod>2021-07-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/CentOS/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
@@ -453,6 +446,13 @@
   
   <url>
     <loc>http://garfielder.com/tags/VMWare/</loc>
+    <lastmod>2021-07-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/MySQL/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -713,13 +713,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
-    <lastmod>2021-07-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/categories/Git/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
@@ -734,6 +727,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <lastmod>2021-07-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/Dash/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
@@ -742,13 +742,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2021-07-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/%E8%8B%A5%E4%BE%9D/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -777,6 +770,13 @@
   
   <url>
     <loc>http://garfielder.com/categories/Vue/</loc>
+    <lastmod>2021-07-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/%E8%8B%A5%E4%BE%9D/</loc>
     <lastmod>2021-07-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
