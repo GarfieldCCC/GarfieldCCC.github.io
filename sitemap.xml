@@ -494,6 +494,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/MySQL/</loc>
+    <lastmod>2021-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/CentOS/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
@@ -502,13 +509,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/VMWare/</loc>
-    <lastmod>2021-07-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/MySQL/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -564,6 +564,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/IDE/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
@@ -572,13 +579,6 @@
   
   <url>
     <loc>http://garfielder.com/tags/JetBrains/</loc>
-    <lastmod>2021-07-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
