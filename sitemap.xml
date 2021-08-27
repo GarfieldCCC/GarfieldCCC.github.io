@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garfielder.com/post/1bde0d35.html</loc>
+    
+    <lastmod>2021-08-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/post/da01de8.html</loc>
     
     <lastmod>2021-08-27</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://garfielder.com/post/3739380.html</loc>
     
     <lastmod>2021-08-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/1bde0d35.html</loc>
-    
-    <lastmod>2021-08-10</lastmod>
     
   </url>
   
@@ -543,20 +543,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/CentOS7/</loc>
-    <lastmod>2021-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/firewalld/</loc>
-    <lastmod>2021-08-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/Linux/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
@@ -565,6 +551,20 @@
   
   <url>
     <loc>http://garfielder.com/tags/nextcloud/</loc>
+    <lastmod>2021-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/CentOS7/</loc>
+    <lastmod>2021-08-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/firewalld/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -895,14 +895,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/nextcloud/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/nextcloud/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-08-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
