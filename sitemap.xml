@@ -571,13 +571,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/onlyoffice/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/Linux/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
@@ -586,6 +579,13 @@
   
   <url>
     <loc>http://garfielder.com/tags/nextcloud/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/onlyoffice/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -634,34 +634,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/HTTP/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/GitHub/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Go/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/%E7%BC%96%E7%A0%81/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
@@ -697,6 +669,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/Go/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/MQTT/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
@@ -725,7 +704,28 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/tags/HTTP/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/tags/Navicat/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/GitHub/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E5%9F%9F%E5%90%8D/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -916,13 +916,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/categories/nextcloud/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
@@ -930,14 +923,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/Git/</loc>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -952,6 +938,13 @@
   
   <url>
     <loc>http://garfielder.com/categories/Dash/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -979,7 +972,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Python/</loc>
+    <loc>http://garfielder.com/categories/Git/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -993,7 +986,21 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/categories/Python/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/Nginx/</loc>
+    <lastmod>2021-09-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/Windows/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1015,13 +1022,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/Springboot/</loc>
-    <lastmod>2021-09-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/Windows/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1056,14 +1056,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/iOS/</loc>
+    <loc>http://garfielder.com/categories/Java/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Java/</loc>
+    <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
