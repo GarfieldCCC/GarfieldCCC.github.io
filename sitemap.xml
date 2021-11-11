@@ -634,14 +634,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/MySQL/</loc>
+    <loc>http://garfielder.com/tags/Docker/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Docker/</loc>
+    <loc>http://garfielder.com/tags/MySQL/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -928,13 +928,6 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-11-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/tags/iOS/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
@@ -943,6 +936,13 @@
   
   <url>
     <loc>http://garfielder.com/tags/%E5%BE%AE%E4%BF%A1/</loc>
+    <lastmod>2021-11-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -965,14 +965,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/Docker/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Docker/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1126,14 +1126,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Java/</loc>
+    <loc>http://garfielder.com/categories/iOS/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/iOS/</loc>
+    <loc>http://garfielder.com/categories/Java/</loc>
     <lastmod>2021-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
