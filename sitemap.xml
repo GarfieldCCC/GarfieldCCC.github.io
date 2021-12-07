@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garfielder.com/post/a92f9037.html</loc>
+    
+    <lastmod>2021-12-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/e1df0514.html</loc>
+    
+    <lastmod>2021-12-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/post/d9b9e913.html</loc>
+    
+    <lastmod>2021-12-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/post/8ed0ed59.html</loc>
     
     <lastmod>2021-12-07</lastmod>
@@ -16,21 +37,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/post/e1df0514.html</loc>
-    
-    <lastmod>2021-11-25</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://garfielder.com/post/85295113.html</loc>
-    
-    <lastmod>2021-11-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/d9b9e913.html</loc>
     
     <lastmod>2021-11-24</lastmod>
     
@@ -185,13 +192,6 @@
   
   <url>
     <loc>http://garfielder.com/post/e3f67d02.html</loc>
-    
-    <lastmod>2021-08-04</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/post/a92f9037.html</loc>
     
     <lastmod>2021-08-04</lastmod>
     
@@ -655,7 +655,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/onlyoffice/</loc>
+    <loc>http://garfielder.com/tags/firewalld/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -676,7 +676,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/firewalld/</loc>
+    <loc>http://garfielder.com/tags/onlyoffice/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -767,14 +767,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/IDE/</loc>
-    <lastmod>2021-12-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/JetBrains/</loc>
+    <loc>http://garfielder.com/tags/Jmeter/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -788,7 +781,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Jmeter/</loc>
+    <loc>http://garfielder.com/tags/IDE/</loc>
+    <lastmod>2021-12-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/JetBrains/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -879,14 +879,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Vue/</loc>
+    <loc>http://garfielder.com/tags/Vim/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Vim/</loc>
+    <loc>http://garfielder.com/tags/Vue/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1070,14 +1070,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Dash/</loc>
+    <loc>http://garfielder.com/categories/Jmeter/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Jmeter/</loc>
+    <loc>http://garfielder.com/categories/Dash/</loc>
     <lastmod>2021-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
