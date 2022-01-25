@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="CI1jqQ3Mhk0QSn61VHhjaeopJ0djgDy0IU_65qfQqiQ"><meta name="msvalidate.01" content="87144E235564BBBA9FFE3F19C36EEC0A"><meta name="baidu-site-verification" content="code-2yY2VTJ1Zi"><meta name="360-site-verification" content="479be47aa29500f8aeb1b40a9a67026f"><meta name="description" content="Flowable 数据库表详解（转载）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flowable 数据库表详解">
+<meta property="og:url" content="http://garfielder.com/post/345f24d7.html">
+<meta property="og:site_name" content="Garfield Blog">
+<meta property="og:description" content="Flowable 数据库表详解（转载）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-25T06:17:19.000Z">
+<meta property="article:modified_time" content="2022-01-25T06:32:32.400Z">
+<meta property="article:author" content="Garfield">
+<meta property="article:tag" content="Flowable">
+<meta name="twitter:card" content="summary"><title>Flowable 数据库表详解 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/345f24d7.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?225e5d3b94db0afd1e42a378e377cbfb';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Flowable 数据库表详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-01-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-01-25</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">721</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">4分</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p><strong>此文转载自：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://my.oschina.net/thinkgem/blog/4765491" >https://my.oschina.net/thinkgem/blog/4765491</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></strong></p>
+
+        <h3 id="Flowable数据库表命名规则"   >
+          <a href="#Flowable数据库表命名规则" class="heading-link"><i class="fas fa-link"></i></a><a href="#Flowable数据库表命名规则" class="headerlink" title="Flowable数据库表命名规则"></a><code>Flowable</code>数据库表命名规则</h3>
+      <p><strong>ACT_RE_* :</strong>   <code>RE</code>表示repository（存储）。<code>RepositoryService</code>接口操作的表。带此前缀的表包含的是静态信息，如，流程定义，流程的资源（图片，规则等）。</p>
+<p><strong>ACT_RU_* :</strong>  <code>RU</code>表示runtime。这是运行时的表存储着流程变量，用户任务，变量，职责（job）等运行时的数据。<code>Flowable</code>只存储实例执行期间的运行时数据，当流程实例结束时，将删除这些记录。这就保证了这些运行时的表小且快。</p>
+<p><strong>ACT_ID_* :</strong>   <code>ID</code>表示identity(组织机构)。这些表包含标识的信息，如用户，用户组，等等。</p>
+<p><strong>ACT_HI_* :</strong>   <code>HI</code>表示history。就是这些表包含着历史的相关数据，如结束的流程实例，变量，任务，等等。</p>
+<p><strong>ACT_GE_* :</strong>   普通数据，各种情况都使用的数据。</p>
+
+        <h3 id="数据库表结构-34张表，不同版本数量可能会有出入"   >
+          <a href="#数据库表结构-34张表，不同版本数量可能会有出入" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据库表结构-34张表，不同版本数量可能会有出入" class="headerlink" title="数据库表结构(34张表，不同版本数量可能会有出入)"></a>数据库表结构(34张表，不同版本数量可能会有出入)</h3>
+      
+        <h4 id="一般数据-2"   >
+          <a href="#一般数据-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#一般数据-2" class="headerlink" title="一般数据(2)"></a>一般数据(2)</h4>
+      <p><code>ACT_GE_BYTEARRAY</code>  通用的流程定义和流程资源</p>
+<p><code>ACT_GE_PROPERTY</code>  系统相关属性</p>
+
+        <h4 id="流程历史数据-8"   >
+          <a href="#流程历史数据-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#流程历史数据-8" class="headerlink" title="流程历史数据(8)"></a>流程历史数据(8)</h4>
+      <p><code>ACT_HI_ACTINST</code>  历史的流程实例</p>
+<p><code>ACT_HI_ATTACHMENT</code>  历史的流程附件</p>
+<p><code>ACT_HI_COMMENT</code>  历史的说明性信息</p>
+<p><code>ACT_HI_DETAIL</code>  历史的流程运行中的细节信息</p>
+<p><code>ACT_HI_IDENTITYLINK</code>  历史的流程运行过程中用户关系</p>
+<p><code>ACT_HI_PROCINST</code>  历史的流程实例</p>
+<p><code>ACT_HI_TASKINST</code>  历史的任务实例</p>
+<p><code>ACT_HI_VARINST</code>  历史的流程运行中的变量信息</p>
+
+        <h4 id="用户及用户组表-9"   >
+          <a href="#用户及用户组表-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#用户及用户组表-9" class="headerlink" title="用户及用户组表(9)"></a>用户及用户组表(9)</h4>
+      <p><code>ACT_ID_BYTEARRAY</code>  二进制数据表</p>
+<p><code>ACT_ID_GROUP</code>  用户组信息表</p>
+<p><code>ACT_ID_INFO</code>  用户信息详情表</p>
+<p><code>ACT_ID_MEMBERSHIP</code>  人与组关系表</p>
+<p><code>ACT_ID_PRIV</code>  权限表</p>
+<p><code>ACT_ID_PRIV_MAPPING</code>  用户或组权限关系表</p>
+<p><code>ACT_ID_PROPERTY</code>  属性表</p>
+<p><code>ACT_ID_TOKEN</code>  系统登录日志表</p>
+<p><code>ACT_ID_USER</code>  用户表</p>
+
+        <h4 id="流程定义表-3"   >
+          <a href="#流程定义表-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#流程定义表-3" class="headerlink" title="流程定义表(3)"></a>流程定义表(3)</h4>
+      <p><code>ACT_RE_DEPLOYMENT</code>  部署单元信息</p>
+<p><code>ACT_RE_MODEL</code>  模型信息</p>
+<p><code>ACT_RE_PROCDEF</code>  已部署的流程定义</p>
+
+        <h4 id="运行实例表-10"   >
+          <a href="#运行实例表-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#运行实例表-10" class="headerlink" title="运行实例表(10)"></a>运行实例表(10)</h4>
+      <p><code>ACT_RU_DEADLETTER_JOB</code>  正在运行的任务表</p>
+<p><code>ACT_RU_EVENT_SUBSCR</code>  运行时事件</p>
+<p><code>ACT_RU_EXECUTION</code>  运行时流程执行实例</p>
+<p><code>ACT_RU_HISTORY_JOB</code>  历史作业表</p>
+<p><code>ACT_RU_IDENTITYLINK</code>  运行时用户关系信息</p>
+<p><code>ACT_RU_JOB</code>  运行时作业表</p>
+<p><code>ACT_RU_SUSPENDED_JOB</code>  暂停作业表</p>
+<p><code>ACT_RU_TASK</code>  运行时任务表</p>
+<p><code>ACT_RU_TIMER_JOB</code>  定时作业表</p>
+<p><code>ACT_RU_VARIABLE</code>  运行时变量表</p>
+
+        <h4 id="其他表-2"   >
+          <a href="#其他表-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#其他表-2" class="headerlink" title="其他表(2)"></a>其他表(2)</h4>
+      <p><code>ACT_EVT_LOG</code>  事件日志表</p>
+<p><code>ACT_PROCDEF_INFO</code>  流程定义信息</p>
+
+        <h3 id="数据表详细说明"   >
+          <a href="#数据表详细说明" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据表详细说明" class="headerlink" title="数据表详细说明"></a>数据表详细说明</h3>
+      
+        <h4 id="ACT-GE-BYTEARRAY-资源表"   >
+          <a href="#ACT-GE-BYTEARRAY-资源表" class="heading-link"><i class="fas fa-link"></i></a><a href="#ACT-GE-BYTEARRAY-资源表" class="headerlink" title="ACT_GE_BYTEARRAY 资源表"></a><code>ACT_GE_BYTEARRAY </code>资源表</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>主键</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ID_</td>
+<td>NVARCHAR2(64)</td>
+<td>Y</td>
+<td>主键</td>
+<td></td>
+</tr>
+<tr>
+<td>REV_</td>
+<td>INTEGER</td>
+<td>N</td>
+<td>数据版本</td>
+<td>Activiti有可能会被频繁修改数据库表，加入字段，用来表示该数据被操作的次数</td>
+</tr>
+<tr>
+<td>NAME_</td>
+<td>NVARCHAR2(255)</td>
+<td>N</td>
+<td>资源名称</td>
+<td></td>
+</tr>
+<tr>
+<td>DEPLOYMENT_ID_</td>
+<td>NVARCHAR2(64)</td>
+<td>N</td>
+<td>部署序号</td>
+<td>部署序号,一次部署可以部署多个资源,该字段与部署表ACT_RE_DEPLOYMENT的主键关联</td>
+</tr>
+<tr>
+<td>BYTES_</td>
+<td>BLOB</td>
+<td>N</td>
+<td>资源内容</td>
+<td></td>
+</tr>
+<tr>
+<td>GENERATED_</td>
+<td>NUMBER(1)</td>
+<td>N</td>
+<td>是否是右activiti自动产生的资源</td>
+<td>0表示false，1表示true</td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="ACT-GE-PROPERTY-属性表"   >
+          <a href="#ACT-GE-PROPERTY-属性表" class="heading-link"><i class="fas fa-link"></i></a><a href="#ACT-GE-PROPERTY-属性表" class="headerlink" title="ACT_GE_PROPERTY 属性表"></a><code>ACT_GE_PROPERTY</code> 属性表</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>主键</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NAME_</td>
+<td>NVARCHAR2(64)</td>
+<td>Y</td>
+<td>属性名称</td>
+<td></td>
+</tr>
+<tr>
+<td>VALUE_</td>
+<td>NVARCHAR2(300)</td>
+<td>N</td>
+<td>属性值</td>
+<td></td>
+</tr>
+<tr>
+<td>REV_</td>
+<td>INTEGER</td>
+<td>N</td>
+<td>数据版本号</td>
+<td></td>
+</tr>
+</tbody></table></div>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/345f24d7.html">http://garfielder.com/post/345f24d7.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/Flowable/">Flowable</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/e10aaa92.html"><span class="paginator-prev__text">CentOS7 安装 ExpressVPN 客户端</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Flowable%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">
+          Flowable数据库表命名规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84-34%E5%BC%A0%E8%A1%A8%EF%BC%8C%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E6%95%B0%E9%87%8F%E5%8F%AF%E8%83%BD%E4%BC%9A%E6%9C%89%E5%87%BA%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">
+          数据库表结构(34张表，不同版本数量可能会有出入)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%95%B0%E6%8D%AE-2"><span class="toc-number">2.1.</span> <span class="toc-text">
+          一般数据(2)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE-8"><span class="toc-number">2.2.</span> <span class="toc-text">
+          流程历史数据(8)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8F%8A%E7%94%A8%E6%88%B7%E7%BB%84%E8%A1%A8-9"><span class="toc-number">2.3.</span> <span class="toc-text">
+          用户及用户组表(9)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%AE%9A%E4%B9%89%E8%A1%A8-3"><span class="toc-number">2.4.</span> <span class="toc-text">
+          流程定义表(3)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%AE%9E%E4%BE%8B%E8%A1%A8-10"><span class="toc-number">2.5.</span> <span class="toc-text">
+          运行实例表(10)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%A1%A8-2"><span class="toc-number">2.6.</span> <span class="toc-text">
+          其他表(2)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">
+          数据表详细说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ACT-GE-BYTEARRAY-%E8%B5%84%E6%BA%90%E8%A1%A8"><span class="toc-number">3.1.</span> <span class="toc-text">
+          ACT_GE_BYTEARRAY 资源表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ACT-GE-PROPERTY-%E5%B1%9E%E6%80%A7%E8%A1%A8"><span class="toc-number">3.2.</span> <span class="toc-text">
+          ACT_GE_PROPERTY 属性表</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://i.loli.net/2021/03/09/b1rHUNsg9GdK2S5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">向上向善</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/GarfieldCCC" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/e8214c6701c6" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/garfield_598ab2e99b0c5" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/garfield-21-38" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Garfield</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'http://garfielder.com/post/345f24d7.html', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: '7QW51uURwmFEJVmXD4UC943o-gzGzoHsz',
+    appKey: 'UTbCV1BcSh71YxpBEu7wG05I',
+    notify: true,
+    verify: true,
+    placeholder: 'Comment...',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: '' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (true) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
