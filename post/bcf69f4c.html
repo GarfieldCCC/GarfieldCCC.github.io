@@ -1,0 +1,573 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="CI1jqQ3Mhk0QSn61VHhjaeopJ0djgDy0IU_65qfQqiQ"><meta name="msvalidate.01" content="87144E235564BBBA9FFE3F19C36EEC0A"><meta name="baidu-site-verification" content="code-2yY2VTJ1Zi"><meta name="360-site-verification" content="479be47aa29500f8aeb1b40a9a67026f"><meta name="description" content="SpringBoot整合canal实现对MySQL数据库监控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot整合canal实现对MySQL数据库监控">
+<meta property="og:url" content="http://garfielder.com/post/bcf69f4c.html">
+<meta property="og:site_name" content="Garfield Blog">
+<meta property="og:description" content="SpringBoot整合canal实现对MySQL数据库监控">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/x3P2I57XcYoJy8D.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/Ikvn3xBiaoQtgmy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/1j7YBQn3pCieAqb.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/LWpre6dno9SbMCf.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/lLUcZyFkAj1Rzp4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/XDQNr4wMjKAuJUd.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/ZNOn1Tswjx6vCHW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/HkUvxwcnu6X3t58.png">
+<meta property="og:image" content="https://s2.loli.net/2022/03/25/Bg3vrdUlNIRfJ8j.png">
+<meta property="article:published_time" content="2022-03-25T00:18:50.000Z">
+<meta property="article:modified_time" content="2022-03-25T01:23:52.552Z">
+<meta property="article:author" content="Garfield">
+<meta property="article:tag" content="Springboot">
+<meta property="article:tag" content="canal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/03/25/x3P2I57XcYoJy8D.png"><title>springboot整合canal实现对MySQL数据库监控 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/bcf69f4c.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?225e5d3b94db0afd1e42a378e377cbfb';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">springboot整合canal实现对MySQL数据库监控</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-03-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-03-25</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.5k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">13分</span></span></div></header><div class="post-body">
+        <h3 id="介绍"   >
+          <a href="#介绍" class="heading-link"><i class="fas fa-link"></i></a><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3>
+      <p><code>canal</code>是阿里巴巴旗下的一款开源项目，纯<code>Java</code>开发。基于数据库增量日志解析，提供增量数据订阅&amp;消费，目前主要支持了<code>MySQL</code>（也支持<code>mariaDB</code>）。</p>
+
+        <h3 id="开始"   >
+          <a href="#开始" class="heading-link"><i class="fas fa-link"></i></a><a href="#开始" class="headerlink" title="开始"></a>开始</h3>
+      
+        <h4 id="MySQL环境准备"   >
+          <a href="#MySQL环境准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#MySQL环境准备" class="headerlink" title="MySQL环境准备"></a><code>MySQL</code>环境准备</h4>
+      <p>使用<code>MySQL5.1.x</code>以上即可</p>
+
+        <h5 id="创建canal用户"   >
+          <a href="#创建canal用户" class="heading-link"><i class="fas fa-link"></i></a><a href="#创建canal用户" class="headerlink" title="创建canal用户"></a>创建canal用户</h5>
+      <p>创建一个canal用户，用来监控：</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 使用命令登录：mysql -u root -p</span><br><span class="line">-- 创建用户 用户名：canal 密码：canal</span><br><span class="line">create user &#39;canal&#39;@&#39;%&#39; identified by &#39;canal&#39;;</span><br><span class="line">-- 授权 *.*表示所有库</span><br><span class="line">grant SELECT, REPLICATION SLAVE, REPLICATION CLIENT on *.* to &#39;canal&#39;@&#39;%&#39;;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="配置my-ini"   >
+          <a href="#配置my-ini" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置my-ini" class="headerlink" title="配置my.ini"></a>配置<code>my.ini</code></h5>
+      <p>在<code>MySQL</code>配置文件<code>my.ini</code>，添加以下内容：</p>
+<figure class="highlight ini"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># 打开binlog</span></span><br><span class="line"><span class="attr">log-bin</span>=mysql-bin</span><br><span class="line"><span class="comment"># 选择ROW(行)模式</span></span><br><span class="line"><span class="attr">binlog-format</span>=ROW</span><br><span class="line"><span class="comment"># 配置MySQL replaction需要定义，不要和canal的slaveId重复</span></span><br><span class="line"><span class="attr">server_id</span>=<span class="number">1</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="重启MySQL并查看配置"   >
+          <a href="#重启MySQL并查看配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#重启MySQL并查看配置" class="headerlink" title="重启MySQL并查看配置"></a>重启<code>MySQL</code>并查看配置</h5>
+      <p>查看是否打开<code>binlog</code>模式</p>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 查看是否打开binlog模式</span><br><span class="line">show VARIABLES like &#39;%log_bin%&#39;</span><br></pre></td></tr></table></div></figure>
+
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/x3P2I57XcYoJy8D.png"  alt="binlog模式">
+      </p>
+
+        <h4 id="安装canal"   >
+          <a href="#安装canal" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装canal" class="headerlink" title="安装canal"></a>安装<code>canal</code></h4>
+      
+        <h5 id="资源下载"   >
+          <a href="#资源下载" class="heading-link"><i class="fas fa-link"></i></a><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h5>
+      <p>下载地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/alibaba/canal/releases" >https://github.com/alibaba/canal/releases</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/Ikvn3xBiaoQtgmy.png"  alt="下载">
+      </p>
+
+        <h5 id="解压资源"   >
+          <a href="#解压资源" class="heading-link"><i class="fas fa-link"></i></a><a href="#解压资源" class="headerlink" title="解压资源"></a>解压资源</h5>
+      <p>解压下载好的压缩包到任意目录</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/1j7YBQn3pCieAqb.png"  alt="解压">
+      </p>
+
+        <h5 id="配置instance-properties文件"   >
+          <a href="#配置instance-properties文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#配置instance-properties文件" class="headerlink" title="配置instance.properties文件"></a>配置<code>instance.properties</code>文件</h5>
+      <p>打开<code>conf/example/instance.properties</code>文件</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/LWpre6dno9SbMCf.png"  alt="配置">
+      </p>
+<p>其中：</p>
+<p><code>canal.instance.naster.address</code>填写需要监听的数据库的服务器地址（如果在本地就127.0.0.1）</p>
+<p><code>canal.instance.dbUsername</code>填写需要监听的数据库用户名</p>
+<p><code>canal.instance.dbPassword</code>填写需要监听的数据库密码</p>
+<p><code>canal.instance.defaultDatabaseName</code>填写需要监听的数据库名</p>
+<p><code>canal.instance.filter.regex</code>填写需要监听的表名，这里的格式为正则表达式。常用的表达式如下：</p>
+<blockquote>
+<ol>
+<li>所有表：<code>.*</code>  或  <code>.*\..*</code></li>
+<li>canal  schema下所有表：<code>canal\..*</code></li>
+<li>canal下的以canal打头的表：<code>canal\.canal.*</code></li>
+<li>canal  schema下的一张表：<code>canal.test1</code></li>
+<li>多个规则组合使用：<code>canal\..*,mysql.test1,mysql.test2</code>（逗号分隔）</li>
+</ol>
+</blockquote>
+<p>在<code>Windows</code>环境下，在<code>bin</code>目录下找到<code>startup.bat</code>启动</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/lLUcZyFkAj1Rzp4.png"  alt="启动界面">
+      </p>
+<p>然后打开<code>logs/canal/canal.log</code>文件，看到内容没有异常信息，说明成功</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/XDQNr4wMjKAuJUd.png"  alt="日志信息">
+      </p>
+
+        <h4 id="SpringBoot整合canal"   >
+          <a href="#SpringBoot整合canal" class="heading-link"><i class="fas fa-link"></i></a><a href="#SpringBoot整合canal" class="headerlink" title="SpringBoot整合canal"></a><code>SpringBoot</code>整合<code>canal</code></h4>
+      
+        <h5 id="引入依赖"   >
+          <a href="#引入依赖" class="heading-link"><i class="fas fa-link"></i></a><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h5>
+      <figure class="highlight xml"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.otter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>canal.client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="新建CanalClient-java"   >
+          <a href="#新建CanalClient-java" class="heading-link"><i class="fas fa-link"></i></a><a href="#新建CanalClient-java" class="headerlink" title="新建CanalClient.java"></a>新建<code>CanalClient.java</code></h5>
+      <p>用来监听<code>MySQL</code></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.shaangu.dist.common.flow.listener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.otter.canal.protocol.CanalEntry;</span><br><span class="line"><span class="keyword">import</span> com.shaangu.dist.common.flow.service.FlowMessageService;</span><br><span class="line"><span class="keyword">import</span> com.shaangu.dist.common.flow.service.FlowTaskCommentService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.InitializingBean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.PostConstruct;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CanalClient</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> FlowMessageService flowMessageService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> FlowTaskCommentService flowTaskCommentService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CanalClient canalClient;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        canalClient = <span class="keyword">this</span>;</span><br><span class="line">        canalClient.flowMessageService = <span class="keyword">this</span>.flowMessageService;</span><br><span class="line">        canalClient.flowTaskCommentService = <span class="keyword">this</span>.flowTaskCommentService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打印canal server解析binlog获得的实体类信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printEntry</span><span class="params">(List&lt;CanalEntry.Entry&gt; entrys)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (CanalEntry.Entry entry : entrys) &#123;</span><br><span class="line">            <span class="keyword">if</span> (entry.getEntryType() == CanalEntry.EntryType.TRANSACTIONBEGIN || entry.getEntryType() == CanalEntry.EntryType.TRANSACTIONEND) &#123;</span><br><span class="line">                <span class="comment">//开启/关闭事务的实体类型，跳过</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//RowChange对象，包含了一行数据变化的所有特征</span></span><br><span class="line">            <span class="comment">//比如isDdl 是否是ddl变更操作 sql 具体的ddl sql beforeColumns afterColumns 变更前后的数据字段等等</span></span><br><span class="line">            CanalEntry.RowChange rowChange;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                rowChange = CanalEntry.RowChange.parseFrom(entry.getStoreValue());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;ERROR ## parser of eromanga-event has an error , data:&quot;</span> + entry.toString(), e);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//获取操作类型：insert/update/delete类型</span></span><br><span class="line">            CanalEntry.EventType eventType = rowChange.getEventType();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断是否是DDL语句</span></span><br><span class="line">            <span class="keyword">if</span> (rowChange.getIsDdl()) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;是DDL语句&quot;</span> + rowChange.getSql());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 根据不同的语句类型，处理不同的业务</span></span><br><span class="line">            <span class="keyword">if</span> (eventType == CanalEntry.EventType.INSERT) &#123;</span><br><span class="line">                <span class="comment">// 是新增语句，业务处理。如果新增的时候数据没有发生变化的情况下，是不会被执行</span></span><br><span class="line">                System.out.println(<span class="string">&quot;--------------INSERT---------------&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;库名：&quot;</span> + entry.getHeader().getSchemaName() + <span class="string">&quot;-- 表名：&quot;</span> + entry.getHeader().getTableName() + <span class="string">&quot;新增数据&quot;</span>);</span><br><span class="line">                <span class="comment">// 获取RowChange对象里面的每一行信息</span></span><br><span class="line">                <span class="keyword">for</span> (CanalEntry.RowData rowData : rowChange.getRowDatasList()) &#123;</span><br><span class="line">                    printColumn(rowData.getAfterColumnsList(), eventType);</span><br><span class="line">                    Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (eventType == CanalEntry.EventType.DELETE) &#123;</span><br><span class="line">                <span class="comment">// 是删除语句，业务处理。如果删除的时候是没有数据的情况下，是不会被执行</span></span><br><span class="line">                System.out.println(<span class="string">&quot;--------------DELETE---------------&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;库名：&quot;</span> + entry.getHeader().getSchemaName() + <span class="string">&quot;-- 表名：&quot;</span> + entry.getHeader().getTableName() + <span class="string">&quot;删除数据&quot;</span>);</span><br><span class="line">                <span class="comment">// 获取RowChange对象里面的每一行信息</span></span><br><span class="line">                <span class="keyword">for</span> (CanalEntry.RowData rowData : rowChange.getRowDatasList()) &#123;</span><br><span class="line">                    printColumn(rowData.getBeforeColumnsList(), eventType);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (eventType == CanalEntry.EventType.UPDATE) &#123;</span><br><span class="line">                <span class="comment">// 是修改语句，业务处理。如果修改的时候是没有修改任何数据的情况下，是不会被执行</span></span><br><span class="line">                System.out.println(<span class="string">&quot;--------------UPDATE---------------&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;库名：&quot;</span> + entry.getHeader().getSchemaName() + <span class="string">&quot;-- 表名：&quot;</span> + entry.getHeader().getTableName() + <span class="string">&quot;修改数据&quot;</span>);</span><br><span class="line">                <span class="comment">// 获取RowChange对象里面的每一行信息</span></span><br><span class="line">                <span class="keyword">for</span> (CanalEntry.RowData rowData : rowChange.getRowDatasList()) &#123;</span><br><span class="line">                    printColumn(rowData.getBeforeColumnsList(), eventType);</span><br><span class="line">                    printColumn(rowData.getAfterColumnsList(), eventType);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printColumn</span><span class="params">(List&lt;CanalEntry.Column&gt; columns, CanalEntry.EventType eventType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (eventType == CanalEntry.EventType.INSERT) &#123;</span><br><span class="line">            String title = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">for</span> (CanalEntry.Column column : columns) &#123;</span><br><span class="line"><span class="comment">//                System.out.println(column.getName() + &quot; : &quot; + column.getValue() + &quot;    update=&quot; + column.getUpdated());</span></span><br><span class="line">                <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;PROC_INST_ID_&quot;</span>)) &#123;</span><br><span class="line">                    title = canalClient.flowTaskCommentService.getTitleById(Long.valueOf(canalClient.flowMessageService.getBusinessKeyByPID(column.getValue())));</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (column.getName().equals(<span class="string">&quot;ASSIGNEE_&quot;</span>)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (column.getValue().equals(<span class="string">&quot;admin&quot;</span>)) <span class="keyword">return</span>;</span><br><span class="line">                    canalClient.flowMessageService.sendRabbitMessage(column.getValue(), title);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (CanalEntry.Column column : columns) &#123;</span><br><span class="line">                System.out.println(column.getName() + <span class="string">&quot; : &quot;</span> + column.getValue() + <span class="string">&quot;    update=&quot;</span> + column.getUpdated());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>然后在<code>WebAdminApplication.java</code>中，添加以下代码并调用</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">messageMonitor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   CanalConnector connector = CanalConnectors.newSingleConnector(<span class="keyword">new</span> InetSocketAddress(<span class="string">&quot;host&quot;</span>, <span class="number">11111</span>), <span class="string">&quot;example&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;password&quot;</span>);</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//打开连接</span></span><br><span class="line">      connector.connect();</span><br><span class="line">      <span class="comment">//订阅数据库表,全部表</span></span><br><span class="line">      connector.subscribe(<span class="string">&quot;regex&quot;</span>);</span><br><span class="line">      <span class="comment">//回滚到未进行ack的地方，下次fetch的时候，可以从最后一个没有ack的地方开始拿</span></span><br><span class="line">      connector.rollback();</span><br><span class="line">      <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">         <span class="comment">// 获取指定数量的数据</span></span><br><span class="line">         Message message = connector.getWithoutAck(<span class="number">1000</span>);</span><br><span class="line">         <span class="comment">//获取批量ID</span></span><br><span class="line">         <span class="keyword">long</span> batchId = message.getId();</span><br><span class="line">         <span class="comment">//获取批量的数量</span></span><br><span class="line">         <span class="keyword">int</span> size = message.getEntries().size();</span><br><span class="line">         <span class="comment">//如果没有数据</span></span><br><span class="line">         <span class="keyword">if</span> (batchId == -<span class="number">1</span> || size == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="comment">//线程休眠2秒</span></span><br><span class="line">               Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果有数据,处理数据</span></span><br><span class="line">            CanalClient.printEntry(message.getEntries());</span><br><span class="line">            List&lt;CanalEntry.Entry&gt; entries = message.getEntries();</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">//进行 batch id 的确认。确认之后，小于等于此 batchId 的 Message 都会被确认。</span></span><br><span class="line">         connector.ack(batchId);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      connector.disconnect();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>其中，需要注意修改的参数：</p>
+<p><code>CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress(&quot;host&quot;, 11111), &quot;example&quot;, &quot;root&quot;, &quot;password&quot;);</code>中：</p>
+<p><code>host</code>是你canal所在的服务器地址，11111和example和下面配置保持一致：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/ZNOn1Tswjx6vCHW.png"  alt="11111">
+      </p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/HkUvxwcnu6X3t58.png"  alt="example">
+      </p>
+<p><code>root</code>和<code>password</code>是需要监听的数据库的用户名和密码，<code>regex</code>是需要监听的规则，为正则表达式</p>
+
+        <h4 id="效果"   >
+          <a href="#效果" class="heading-link"><i class="fas fa-link"></i></a><a href="#效果" class="headerlink" title="效果"></a>效果</h4>
+      <p>至此，配置成功。监听成功的效果如下：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/03/25/Bg3vrdUlNIRfJ8j.png"  alt="监听成功">
+      </p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/bcf69f4c.html">http://garfielder.com/post/bcf69f4c.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/Springboot/">Springboot</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/canal/">canal</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/fa25f76e.html"><span class="paginator-prev__text">Hutool工具类ExcelWriter导出Excel列宽自适应</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">
+          介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">
+          开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text">
+          MySQL环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAcanal%E7%94%A8%E6%88%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">
+          创建canal用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEmy-ini"><span class="toc-number">2.1.2.</span> <span class="toc-text">
+          配置my.ini</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8D%E5%90%AFMySQL%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.3.</span> <span class="toc-text">
+          重启MySQL并查看配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85canal"><span class="toc-number">2.2.</span> <span class="toc-text">
+          安装canal</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          资源下载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E8%B5%84%E6%BA%90"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+          解压资源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEinstance-properties%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+          配置instance.properties文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringBoot%E6%95%B4%E5%90%88canal"><span class="toc-number">2.3.</span> <span class="toc-text">
+          SpringBoot整合canal</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">2.3.1.</span> <span class="toc-text">
+          引入依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B0%E5%BB%BACanalClient-java"><span class="toc-number">2.3.2.</span> <span class="toc-text">
+          新建CanalClient.java</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">2.4.</span> <span class="toc-text">
+          效果</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://i.loli.net/2021/03/09/b1rHUNsg9GdK2S5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">冗余时间也可以创造价值</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/GarfieldCCC" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/e8214c6701c6" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/garfield_598ab2e99b0c5" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/garfield-21-38" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Garfield</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'http://garfielder.com/post/bcf69f4c.html', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: '7QW51uURwmFEJVmXD4UC943o-gzGzoHsz',
+    appKey: 'UTbCV1BcSh71YxpBEu7wG05I',
+    notify: true,
+    verify: true,
+    placeholder: 'Comment...',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: '' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (true) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
