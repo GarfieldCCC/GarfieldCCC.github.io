@@ -5,16 +5,16 @@
 <meta property="og:site_name" content="Garfield Blog">
 <meta property="og:description" content="Excel输入内容后自动填充当前时间">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/27611/AppData/Roaming/Typora/typora-user-images/image-20220513111601310.png">
-<meta property="og:image" content="c:/Users/27611/AppData/Roaming/Typora/typora-user-images/image-20220513111709979.png">
-<meta property="og:image" content="c:/Users/27611/AppData/Roaming/Typora/typora-user-images/image-20220513112124199.png">
-<meta property="og:image" content="c:/Users/27611/AppData/Roaming/Typora/typora-user-images/image-20220513112219493.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/13/VHgDPJyd36BSuht.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/13/4xJek5jgGICEQNo.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/13/7CIRqw4nVEWsBGj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/13/PBVTiSR5Qs6cIfE.png">
 <meta property="article:published_time" content="2022-05-13T03:13:46.000Z">
-<meta property="article:modified_time" content="2022-05-13T03:23:03.843Z">
+<meta property="article:modified_time" content="2022-05-13T03:25:08.651Z">
 <meta property="article:author" content="Garfield">
 <meta property="article:tag" content="Excel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/27611/AppData/Roaming/Typora/typora-user-images/image-20220513111601310.png"><title>Excel输入内容后自动填充当前时间 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/9bbf4b53.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://s2.loli.net/2022/05/13/VHgDPJyd36BSuht.png"><title>Excel输入内容后自动填充当前时间 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/9bbf4b53.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement('script');
   hm.src = 'https://hm.baidu.com/hm.js?225e5d3b94db0afd1e42a378e377cbfb';
@@ -59,13 +59,13 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
       <p>首先使用<code>WPS</code>打开表格文件，在表格中在<code>A1</code>单元格中输入文字“输入”（具体根据你的实际情况命名，这里只是举例），在<code>B1</code>单元格输入文字“时间”，A列的单元格就是以后输入项，B列对应的单元格就会显示时间。</p>
 
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="C:\Users\27611\AppData\Roaming\Typora\typora-user-images\image-20220513111601310.png"  alt="输入" style="zoom:50%;" />
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/05/13/VHgDPJyd36BSuht.png"  alt="输入" style="zoom:50%;" />
       
 
 <p>接着点击 文件，出现下拉选项。在下拉选项中选择点击 选项。进入选项界面，在侧边栏点击 重新计算。在重新计算详细，勾选 迭代计算，再点击 确定。</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="C:\Users\27611\AppData\Roaming\Typora\typora-user-images\image-20220513111709979.png"  alt="迭代计算">
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/05/13/4xJek5jgGICEQNo.png"  alt="迭代计算">
       </p>
 <p>返回表格主界面，我们选中<code>B2</code>单元，在<code>B2</code>单元格中输入公式：</p>
 <p><code>=if(a2=&quot;&quot;,&quot;&quot;,if(b2=&quot;&quot;,text(now(),&quot;yyyy-mm-dd hh:mm:ss&quot;),b2))</code>，按下回车。</p>
@@ -73,12 +73,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p>公式中的<code>A2</code>和<code>B2</code>，是可以修改的，可以是任意单元格。<code>A2</code>是输入单元格，<code>B2</code>是时间单元格，确定好你的输入单元格和时间单元格。</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="C:\Users\27611\AppData\Roaming\Typora\typora-user-images\image-20220513112124199.png"  alt="公式">
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/05/13/7CIRqw4nVEWsBGj.png"  alt="公式">
       </p>
 <p>公式输入完成按下回车后，在<code>A2</code>单元格输入任意文字、数字等，按下回车，就可以看到在<code>B2</code>单元格显示出当前的日期和时间。</p>
 <p>
         <img   class="lazyload lazyload-gif"
-          src="/images/loading.svg" data-src="C:\Users\27611\AppData\Roaming\Typora\typora-user-images\image-20220513112219493.png"  alt="结果">
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/05/13/PBVTiSR5Qs6cIfE.png"  alt="结果">
       </p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/9bbf4b53.html">http://garfielder.com/post/9bbf4b53.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/Excel/">Excel</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/1f7f96f3.html"><span class="paginator-prev__text">JavaScript 复制内容到剪贴板</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">
           背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">
