@@ -802,14 +802,14 @@
 
   
   <url>
-    <loc>http://garfielder.com/tags/%E7%9F%A5%E8%AF%86/</loc>
+    <loc>http://garfielder.com/tags/CentOS7/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/CentOS7/</loc>
+    <loc>http://garfielder.com/tags/%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -844,14 +844,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/MySQL/</loc>
+    <loc>http://garfielder.com/tags/Docker/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/Docker/</loc>
+    <loc>http://garfielder.com/tags/MySQL/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1245,7 +1245,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1259,7 +1259,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1267,6 +1267,20 @@
   
   <url>
     <loc>http://garfielder.com/categories/nextcloud/</loc>
+    <lastmod>2022-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/Windows/</loc>
+    <lastmod>2022-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/categories/Dash/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1309,20 +1323,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/Java/</loc>
-    <lastmod>2022-06-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/Windows/</loc>
-    <lastmod>2022-06-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/Dash/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1378,6 +1378,13 @@
   </url>
   
   <url>
+    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <lastmod>2022-06-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://garfielder.com/categories/Springboot/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
@@ -1393,13 +1400,6 @@
   
   <url>
     <loc>http://garfielder.com/categories/Vue/</loc>
-    <lastmod>2022-06-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2022-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
