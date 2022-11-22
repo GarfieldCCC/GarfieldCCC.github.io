@@ -1,0 +1,621 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="CI1jqQ3Mhk0QSn61VHhjaeopJ0djgDy0IU_65qfQqiQ"><meta name="msvalidate.01" content="87144E235564BBBA9FFE3F19C36EEC0A"><meta name="baidu-site-verification" content="code-2yY2VTJ1Zi"><meta name="360-site-verification" content="479be47aa29500f8aeb1b40a9a67026f"><meta name="description" content="若依集成企业微信网页授权登录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="企业微信网页授权登录">
+<meta property="og:url" content="http://garfielder.com/post/1362ebbb.html">
+<meta property="og:site_name" content="Garfield Blog">
+<meta property="og:description" content="若依集成企业微信网页授权登录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/LV1mjSTgDfFv4Oy.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/uQkRKUpJOH9XGLm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/RuNYmqnXW91Khjp.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/za5gkIPhuA4MWjd.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/qdJj5D8rzK6GROT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/wr6UxBTuI2bJ7qC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/kgIv4xnDVQcTfSh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/f2Qg5pZ1SRN3ADl.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/22/9POBjKZRu2kzVA1.gif">
+<meta property="article:published_time" content="2022-11-22T00:17:53.000Z">
+<meta property="article:modified_time" content="2022-11-22T02:34:03.439Z">
+<meta property="article:author" content="Garfield">
+<meta property="article:tag" content="若依">
+<meta property="article:tag" content="企业微信">
+<meta property="article:tag" content="OAuth2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/22/LV1mjSTgDfFv4Oy.png"><title>企业微信网页授权登录 | Garfield Blog</title><link ref="canonical" href="http://garfielder.com/post/1362ebbb.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?225e5d3b94db0afd1e42a378e377cbfb';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-book"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">企业微信网页授权登录</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-11-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-11-22</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">3.2k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">34分</span></span></div></header><div class="post-body">
+        <h3 id="背景"   >
+          <a href="#背景" class="heading-link"><i class="fas fa-link"></i></a><a href="#背景" class="headerlink" title="背景"></a>背景</h3>
+      <p>本文将介绍若依框架集成企业微信实现网页授权登录，以达到自建应用免登录的体验效果。</p>
+
+        <h3 id="开发前准备"   >
+          <a href="#开发前准备" class="heading-link"><i class="fas fa-link"></i></a><a href="#开发前准备" class="headerlink" title="开发前准备"></a>开发前准备</h3>
+      
+        <h4 id="调用流程"   >
+          <a href="#调用流程" class="heading-link"><i class="fas fa-link"></i></a><a href="#调用流程" class="headerlink" title="调用流程"></a>调用流程</h4>
+      <p>官方文档：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://developer.work.weixin.qq.com/document/path/91335" >https://developer.work.weixin.qq.com/document/path/91335</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/LV1mjSTgDfFv4Oy.png"  alt="OAuth2接入流程">
+      </p>
+<p>步骤如下：</p>
+<ol>
+<li>用户访问第三方服务，第三方服务通过构造<code>OAuth2</code>链接（参数包括当前第三方服务的身份ID，以及重定向URI），将用户引导到认证服务器的授权页；</li>
+<li>用户选择是否同意授权；</li>
+<li>若用户同意授权，则认证服务器将用户重定向到第一步指定的重定向URI，同时附上一个授权码；</li>
+<li>第三方服务收到授权码，带上授权码来源的重定向URI，向认证服务器申请凭证；</li>
+<li>认证服务器检查授权码和重定向URI的有效性，通过后颁发<code>AccessToken</code>（调用凭证）。</li>
+</ol>
+
+        <h4 id="开发前准备-1"   >
+          <a href="#开发前准备-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#开发前准备-1" class="headerlink" title="开发前准备"></a>开发前准备</h4>
+      
+        <h5 id="可信域名申请"   >
+          <a href="#可信域名申请" class="heading-link"><i class="fas fa-link"></i></a><a href="#可信域名申请" class="headerlink" title="可信域名申请"></a>可信域名申请</h5>
+      <p>由于REDIRECT_URL要求必须为可信域名，因此我们需要为我们的项目申请一个域名。如果你的项目已经开发完成，可以直接申请一个二级域名来使用；如果你刚刚开始开发，急需调试此功能，你可以申请一个临时的免费的域名，这种域名完全免费，但是带宽有极大限制，非必要不建议使用这类域名。我这里因为调试需要，申请了免费域名，带宽很小网速很慢。免费的域名申请这里不做介绍，我使用的是<a target="_blank" rel="noopener" href="https://www.cpolar.com/"><code>Cpolar</code></a>，大家请自行准备好这一步的域名。</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/uQkRKUpJOH9XGLm.png"  alt="Cpolar界面">
+      </p>
+
+        <h5 id="构造网页授权链接"   >
+          <a href="#构造网页授权链接" class="heading-link"><i class="fas fa-link"></i></a><a href="#构造网页授权链接" class="headerlink" title="构造网页授权链接"></a>构造网页授权链接</h5>
+      <p>这个链接一般为了安全，由前端触发请求后端构造网页授权链接（回调<code>redirect_uri</code>）</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//open.weixin.qq.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=snsapi_base&amp;state=STATE#wechat_redirect</span></span><br></pre></td></tr></table></div></figure>
+
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/RuNYmqnXW91Khjp.png"  alt="参数说明">
+      </p>
+
+        <h5 id="设置可信域名"   >
+          <a href="#设置可信域名" class="heading-link"><i class="fas fa-link"></i></a><a href="#设置可信域名" class="headerlink" title="设置可信域名"></a>设置可信域名</h5>
+      <p>登录企业微信管控台（你必须是企业管理员）：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://work.weixin.qq.com/wework_admin/frame#apps" >https://work.weixin.qq.com/wework_admin/frame#apps</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/za5gkIPhuA4MWjd.png"  alt="企业微信管理">
+      </p>
+<p>配置网页授权和企业微信授权</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/qdJj5D8rzK6GROT.png"  alt="网页授权和企业微信授权">
+      </p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/wr6UxBTuI2bJ7qC.png"  alt="网页授权">
+      </p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/kgIv4xnDVQcTfSh.png"  alt="企业微信授权">
+      </p>
+<p>设置自建应用的启动URL：</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/f2Qg5pZ1SRN3ADl.png"  alt="启动URL">
+      </p>
+<p>至此，准备工作已经完成，接下来进入代码开发环节。</p>
+
+        <h3 id="代码开发"   >
+          <a href="#代码开发" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码开发" class="headerlink" title="代码开发"></a>代码开发</h3>
+      
+        <h4 id="构造第一次请求"   >
+          <a href="#构造第一次请求" class="heading-link"><i class="fas fa-link"></i></a><a href="#构造第一次请求" class="headerlink" title="构造第一次请求"></a>构造第一次请求</h4>
+      
+        <h5 id="login-vue"   >
+          <a href="#login-vue" class="heading-link"><i class="fas fa-link"></i></a><a href="#login-vue" class="headerlink" title="login.vue"></a><code>login.vue</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">getOauthUrl</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> oauthCallback = <span class="built_in">encodeURI</span>(<span class="built_in">window</span>.location.protocol + <span class="string">&#x27;//&#x27;</span> + <span class="built_in">window</span>.location.host + <span class="string">&quot;/#/callback&quot;</span>)</span><br><span class="line">  <span class="keyword">let</span> params = &#123;<span class="string">&#x27;oauth_callback&#x27;</span>: oauthCallback&#125;</span><br><span class="line">  oauthUrl(params).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = res.data.oauth_url;</span><br><span class="line">    <span class="keyword">let</span> data = &#123;</span><br><span class="line">      corp_id: res.data.corp_id,</span><br><span class="line">      code: <span class="built_in">this</span>.queryString(<span class="string">&#x27;code=&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    loadingInstance.close();</span><br><span class="line">    <span class="built_in">this</span>.$router.push(&#123;</span><br><span class="line">      name: <span class="string">&#x27;SingleLogin&#x27;</span>,</span><br><span class="line">      query: data</span><br><span class="line">    &#125;).catch(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="auth-js"   >
+          <a href="#auth-js" class="heading-link"><i class="fas fa-link"></i></a><a href="#auth-js" class="headerlink" title="auth.js"></a><code>auth.js</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">oauthUrl</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: <span class="string">&#x27;/h5/oauthUrl&#x27;</span>,</span><br><span class="line">    method: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    params: query</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="H5Controller-java"   >
+          <a href="#H5Controller-java" class="heading-link"><i class="fas fa-link"></i></a><a href="#H5Controller-java" class="headerlink" title="H5Controller.java"></a><code>H5Controller.java</code></h5>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#123;&quot;/h5/oauthUrl&quot;&#125;)</span></span><br><span class="line"><span class="function">JsonData <span class="title">oauthUrl</span><span class="params">(HttpServletRequest request, <span class="meta">@RequestParam(&quot;oauth_callback&quot;)</span> String oauthCallback)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">    Map resData = <span class="keyword">new</span> HashMap();</span><br><span class="line">    QywxInnerCompany qywxInnerCompany = qywxInnerCompanyService.getCorpId(<span class="number">1</span>);</span><br><span class="line">    String corpId = qywxInnerCompany.getCorpId();</span><br><span class="line">    <span class="comment">//普通应用</span></span><br><span class="line">    String oauthRedirectUrl = URLEncoder.encode(oauthCallback, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">    String oauthUrl = qywxInnerService.getOauthUrl(corpId, oauthRedirectUrl);</span><br><span class="line">    System.out.println(<span class="string">&quot;oauth_url:&quot;</span> + oauthUrl);</span><br><span class="line">    resData.put(<span class="string">&quot;oauth_url&quot;</span>, oauthUrl);</span><br><span class="line">    resData.put(<span class="string">&quot;corp_id&quot;</span>, corpId);</span><br><span class="line">    <span class="keyword">return</span> JsonData.buildSuccess(resData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="QywxInnerService-java"   >
+          <a href="#QywxInnerService-java" class="heading-link"><i class="fas fa-link"></i></a><a href="#QywxInnerService-java" class="headerlink" title="QywxInnerService.java"></a><code>QywxInnerService.java</code></h5>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getOauthUrl</span><span class="params">(String corpId, String url)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.format(qywxInnerConfig.getOauthUrl(), corpId, url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="QywxInnerConfig-java"   >
+          <a href="#QywxInnerConfig-java" class="heading-link"><i class="fas fa-link"></i></a><a href="#QywxInnerConfig-java" class="headerlink" title="QywxInnerConfig.java"></a><code>QywxInnerConfig.java</code></h5>
+      <p>构造配置文件</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ruoyi.common.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(prefix = &quot;qywx-inner&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QywxInnerConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String corpId;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String suiteId;</span><br><span class="line">    <span class="keyword">private</span> String suiteSecret;</span><br><span class="line">    <span class="keyword">private</span> String token;</span><br><span class="line">    <span class="keyword">private</span> String encodingAESKey;</span><br><span class="line">    <span class="keyword">private</span> Integer authType;</span><br><span class="line">    <span class="keyword">private</span> String templateId;</span><br><span class="line">    <span class="keyword">private</span> String approvalFlowId;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String baseUrl = <span class="string">&quot;https://qyapi.weixin.qq.com/cgi-bin/&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//服务商相关</span></span><br><span class="line">    <span class="keyword">private</span> String serviceUrl = baseUrl+<span class="string">&quot;service/&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String suiteTokenUrl = serviceUrl+<span class="string">&quot;get_suite_token&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String permanentCodeUrl = serviceUrl+<span class="string">&quot;get_permanent_code?suite_access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取access_token</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/91039</span></span><br><span class="line">    <span class="keyword">private</span> String accessTokenUrl = baseUrl+<span class="string">&quot;gettoken?corpid=%s&amp;corpsecret=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//应用管理</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90227</span></span><br><span class="line">    <span class="keyword">private</span> String agentGetUrl = baseUrl+<span class="string">&quot;agent/get?access_token=%s&amp;agentid=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String agentSetUrl  = baseUrl + <span class="string">&quot;agent/set?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String AgentMenuCreateUrl  = baseUrl + <span class="string">&quot;menu/create?access_token=%s&amp;agentid=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String AgentMenuGetUrl  = baseUrl + <span class="string">&quot;menu/get?access_token=%s&amp;agentid=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String AgentMenuDeleteUrl  = baseUrl + <span class="string">&quot;/menu/delete?access_token=%s&amp;agentid=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//身份验证 扫码授权登录</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/91019</span></span><br><span class="line">    <span class="keyword">private</span> String ssoAuthUrl = <span class="string">&quot;https://open.work.weixin.qq.com/wwopen/sso/qrConnect?appid=%s&amp;agentid=%s&amp;redirect_uri=%s&amp;state=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/91437</span></span><br><span class="line">    <span class="comment">//与H5登录接口一样</span></span><br><span class="line">    <span class="keyword">private</span> String ssoUserInfoUrl = baseUrl+<span class="string">&quot;user/getuserinfo?access_token=%s&amp;code=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//公司相关</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90208</span></span><br><span class="line">    <span class="keyword">private</span> String departmentUrl = baseUrl+<span class="string">&quot;department/list?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90200</span></span><br><span class="line">    <span class="keyword">private</span> String userSimplelistUrl = baseUrl+<span class="string">&quot;user/simplelist?access_token=%s&amp;department_id=%s&amp;fetch_child=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90201</span></span><br><span class="line">    <span class="keyword">private</span> String userDetailListUrl = baseUrl+<span class="string">&quot;user/list?access_token=%s&amp;department_id=%s&amp;fetch_child=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90196</span></span><br><span class="line">    <span class="keyword">private</span> String userDetailUrl = baseUrl+<span class="string">&quot;user/get?access_token=%s&amp;userid=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//客户联系</span></span><br><span class="line">    <span class="comment">//获取配置了客户联系功能的成员列表 https://open.work.weixin.qq.com/api/doc/90000/90135/92571</span></span><br><span class="line">    <span class="keyword">private</span> String extContactFollowUserListUrl = baseUrl+<span class="string">&quot;externalcontact/get_follow_user_list?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//获取客户列表 https://open.work.weixin.qq.com/api/doc/90000/90135/92113</span></span><br><span class="line">    <span class="keyword">private</span> String extContactListUrl = baseUrl+<span class="string">&quot;externalcontact/list?access_token=%s&amp;userid=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//获取客户详情 https://open.work.weixin.qq.com/api/doc/90000/90135/92114</span></span><br><span class="line">    <span class="keyword">private</span> String extContactDetailUrl = baseUrl+<span class="string">&quot;/externalcontact/get?access_token=%s&amp;external_userid=%s&amp;cursor=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//获取客户群列表 https://open.work.weixin.qq.com/api/doc/90000/90135/92120</span></span><br><span class="line">    <span class="keyword">private</span> String extContactGroupchatListUrl = baseUrl+<span class="string">&quot;externalcontact/groupchat/list?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//获取客户群详情 https://open.work.weixin.qq.com/api/doc/90000/90135/92122</span></span><br><span class="line">    <span class="keyword">private</span> String extContactGroupchatDetailUrl = baseUrl+<span class="string">&quot;externalcontact/groupchat/get?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//添加新客户欢迎 https://open.work.weixin.qq.com/api/doc/90000/90135/92137</span></span><br><span class="line">    <span class="keyword">private</span> String extcontactSendWelcomeMsgUrl = baseUrl+<span class="string">&quot;externalcontact/send_welcome_msg?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//创建企业群发 https://open.work.weixin.qq.com/api/doc/90000/90135/92135</span></span><br><span class="line">    <span class="keyword">private</span> String extcontactAddMsgTemplateUrl = baseUrl+<span class="string">&quot;externalcontact/add_msg_template?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//消息推送</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/90236</span></span><br><span class="line">    <span class="keyword">private</span> String messageSendUrl= baseUrl+<span class="string">&quot;message/send?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//素材管理</span></span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/91054</span></span><br><span class="line">    <span class="comment">//type 是  媒体文件类型，分别有图片（image）、语音（voice）、视频（video），普通文件（file）</span></span><br><span class="line">    <span class="keyword">private</span> String mediaUploadUrl = baseUrl+<span class="string">&quot;media/upload?access_token=%s&amp;type=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String mediaUploadimgUrl = baseUrl+<span class="string">&quot;media/uploadimg?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String mediaGetUrl = baseUrl+<span class="string">&quot;media/get?access_token=%s&amp;media_id=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String mediaGetJssdkUrl = baseUrl+<span class="string">&quot;media/get/jssdk?access_token=%s&amp;media_id=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//审批</span></span><br><span class="line">    <span class="comment">//审批应用 https://work.weixin.qq.com/api/doc/90001/90143/91956</span></span><br><span class="line">    <span class="keyword">private</span> String oaCopyTemplateUrl =<span class="string">&quot;oa/approval/copytemplate?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String oaGetTemplateUrl =<span class="string">&quot;/oa/gettemplatedetail?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String oaApplyEventUrl = <span class="string">&quot;oa/applyevent?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String oaGetApprovalUrl =<span class="string">&quot;oa/getapprovaldetail?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//审批流程引擎 https://work.weixin.qq.com/api/doc/90001/90143/93798</span></span><br><span class="line">    <span class="keyword">private</span> String openApprovalDataUrl = baseUrl+<span class="string">&quot;corp/getopenapprovaldata?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// H5应用</span></span><br><span class="line">    <span class="comment">//scope    是  应用授权作用域。企业自建应用固定填写：snsapi_base</span></span><br><span class="line">    <span class="comment">// https://open.work.weixin.qq.com/api/doc/90000/90135/91020</span></span><br><span class="line">    <span class="keyword">private</span> String oauthUrl = <span class="string">&quot;https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&amp;redirect_uri=%s&amp;response_type=code&amp;scope=snsapi_base&amp;state=#wechat_redirect&quot;</span>;</span><br><span class="line">    <span class="comment">//https://open.work.weixin.qq.com/api/doc/90000/90135/91023</span></span><br><span class="line">    <span class="keyword">private</span> String oauthUserUrl = baseUrl+<span class="string">&quot;user/getuserinfo?access_token=%s&amp;code=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90136/90506</span></span><br><span class="line">    <span class="keyword">private</span> String jsapiTicketUrl = baseUrl+<span class="string">&quot;get_jsapi_ticket?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String jsapiTicketAgentUrl = baseUrl+<span class="string">&quot;ticket/get?access_token=%s&amp;type=agent_config&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//家校沟通</span></span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90135/91638</span></span><br><span class="line">    <span class="keyword">private</span> String extContactMessageSendUrl = baseUrl+<span class="string">&quot;externalcontact/message/send?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String extContactSubscribeQrUrl =  baseUrl+<span class="string">&quot;externalcontact/get_subscribe_qr_code?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//此oauth与H5oauth一致  https://work.weixin.qq.com/api/doc/90000/90135/91857</span></span><br><span class="line">    <span class="keyword">private</span> String schoolOauthUrl = <span class="string">&quot;https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&amp;redirect_uri=%s&amp;response_type=code&amp;scope=%s&amp;state=%s#wechat_redirect&quot;</span>;</span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90135/91707</span></span><br><span class="line">    <span class="keyword">private</span> String schoolOauthUserUrl = baseUrl+<span class="string">&quot;user/getuserinfo?access_token=%s&amp;code=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String schoolUrl = baseUrl+<span class="string">&quot;school/&quot;</span>;</span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90135/92337</span></span><br><span class="line">    <span class="keyword">private</span> String schoolUserGetUrl = schoolUrl+<span class="string">&quot;user/get?access_token=%s&amp;userid=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90135/92343</span></span><br><span class="line">    <span class="keyword">private</span> String schoolDepartmentListUrl = schoolUrl+<span class="string">&quot;department/list?access_token=%s&amp;id=%s&quot;</span>;</span><br><span class="line">    <span class="comment">//https://work.weixin.qq.com/api/doc/90000/90135/92446</span></span><br><span class="line">    <span class="keyword">private</span> String schoolUserListUrl = schoolUrl+<span class="string">&quot;user/list?access_token=%s&amp;department_id=%s&amp;fetch_child=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//效率工具</span></span><br><span class="line">    <span class="keyword">private</span> String calendarAddUrl = baseUrl+<span class="string">&quot;oa/calendar/add?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String calendarDetailUrl = baseUrl+<span class="string">&quot;oa/calendar/get?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String scheduleAddUrl = baseUrl+<span class="string">&quot;oa/schedule/add?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String scheduleListUrl = baseUrl+<span class="string">&quot;oa/schedule/get_by_calendar?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String scheduleDetailUrl = baseUrl+<span class="string">&quot;oa/schedule/get?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String meetingCreateUrl =  baseUrl+<span class="string">&quot;meeting/create?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String userMeetingListUrl = baseUrl+<span class="string">&quot;meeting/get_user_meetingid?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String meetingCancelUrl =  baseUrl+<span class="string">&quot;meeting/cancel?access_token=%s&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String meetingDetailUrl = baseUrl+<span class="string">&quot;meeting/get_info?access_token=%s&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//小程序应用</span></span><br><span class="line">    <span class="comment">//小程序登录流程 https://work.weixin.qq.com/api/doc/90000/90136/92426</span></span><br><span class="line">    <span class="comment">//code2Session https://work.weixin.qq.com/api/doc/90000/90136/91507</span></span><br><span class="line">    <span class="keyword">private</span> String code2sessionUrl = baseUrl+<span class="string">&quot;miniprogram/jscode2session?access_token=%s&amp;js_code=%s&amp;grant_type=authorization_code&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSuiteTokenUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> suiteTokenUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPermanentCodeUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> permanentCodeUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getJsapiTicketUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jsapiTicketUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOauthUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oauthUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserSimplelistUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userSimplelistUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAccessTokenUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> accessTokenUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDepartmentUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> departmentUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserDetailListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userDetailListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCorpId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> corpId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSuiteId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> suiteId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSuiteSecret</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> suiteSecret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEncodingAESKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> encodingAESKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAuthType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> authType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOauthUserUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oauthUserUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode2sessionUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code2sessionUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCorpId</span><span class="params">(String corpId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.corpId = corpId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSuiteId</span><span class="params">(String suiteId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.suiteId = suiteId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSuiteSecret</span><span class="params">(String suiteSecret)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.suiteSecret = suiteSecret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setToken</span><span class="params">(String token)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.token = token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEncodingAESKey</span><span class="params">(String encodingAESKey)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.encodingAESKey = encodingAESKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAuthType</span><span class="params">(Integer authType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.authType = authType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTemplateId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> templateId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTemplateId</span><span class="params">(String templateId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.templateId = templateId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getApprovalFlowId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> approvalFlowId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApprovalFlowId</span><span class="params">(String approvalFlowId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.approvalFlowId = approvalFlowId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSsoAuthUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ssoAuthUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getJsapiTicketAgentUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jsapiTicketAgentUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactFollowUserListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactFollowUserListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactGroupchatListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactGroupchatListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessageSendUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> messageSendUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMediaUploadUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mediaUploadUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMediaUploadimgUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mediaUploadimgUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMediaGetUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mediaGetUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMediaGetJssdkUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mediaGetJssdkUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOaCopyTemplateUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oaCopyTemplateUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOaGetTemplateUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oaGetTemplateUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOaApplyEventUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oaApplyEventUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOaGetApprovalUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> oaGetApprovalUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOpenApprovalDataUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> openApprovalDataUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSchoolOauthUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> schoolOauthUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSchoolOauthUserUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> schoolOauthUserUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSchoolUserGetUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> schoolUserGetUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSchoolDepartmentListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> schoolDepartmentListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSchoolUserListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> schoolUserListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactMessageSendUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactMessageSendUrl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactSubscribeQrUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactSubscribeQrUrl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSsoUserInfoUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ssoUserInfoUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAgentGetUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> agentGetUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAgentSetUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> agentSetUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAgentMenuCreateUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> AgentMenuCreateUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAgentMenuGetUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> AgentMenuGetUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAgentMenuDeleteUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> AgentMenuDeleteUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtcontactSendWelcomeMsgUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extcontactSendWelcomeMsgUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtContactGroupchatDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extContactGroupchatDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getExtcontactAddMsgTemplateUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> extcontactAddMsgTemplateUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCalendarAddUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> calendarAddUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCalendarDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> calendarDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getScheduleAddUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scheduleAddUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getScheduleListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scheduleListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getScheduleDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scheduleDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMeetingCreateUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> meetingCreateUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUserMeetingListUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> userMeetingListUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMeetingCancelUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> meetingCancelUrl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMeetingDetailUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> meetingDetailUrl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="构造第二次请求"   >
+          <a href="#构造第二次请求" class="heading-link"><i class="fas fa-link"></i></a><a href="#构造第二次请求" class="headerlink" title="构造第二次请求"></a>构造第二次请求</h4>
+      
+        <h5 id="login-vue-1"   >
+          <a href="#login-vue-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#login-vue-1" class="headerlink" title="login.vue"></a><code>login.vue</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">getOauthUser</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> params = &#123;<span class="string">&#x27;code&#x27;</span>: <span class="built_in">this</span>.queryString(<span class="string">&#x27;code=&#x27;</span>)&#125;</span><br><span class="line"></span><br><span class="line">  oauthUser(params).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.$store.dispatch(<span class="string">&quot;SingleLogin&quot;</span>, &#123;</span><br><span class="line">      userId: res.data.userid</span><br><span class="line">    &#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      loadingInstance.close();</span><br><span class="line">      <span class="built_in">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="built_in">this</span>.redirect || <span class="string">&quot;/&quot;</span>&#125;).catch(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;).catch(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="auth-js-1"   >
+          <a href="#auth-js-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#auth-js-1" class="headerlink" title="auth.js"></a><code>auth.js</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">oauthUser</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: <span class="string">&#x27;/h5/oauthUser&#x27;</span>,</span><br><span class="line">    method: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    params: query</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="H5Controller-java-1"   >
+          <a href="#H5Controller-java-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#H5Controller-java-1" class="headerlink" title="H5Controller.java"></a><code>H5Controller.java</code></h5>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/h5/oauthUser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">oauthCallback</span><span class="params">(HttpServletRequest request, HttpServletResponse response, <span class="meta">@RequestParam(&quot;code&quot;)</span> String code)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//通过code获取信息</span></span><br><span class="line">    QywxInnerCompany qywxInnerCompany = qywxInnerCompanyService.getCorpId(<span class="number">1</span>);</span><br><span class="line">    String corpId = qywxInnerCompany.getCorpId();</span><br><span class="line">    Map result = qywxInnerService.getOauthUser(corpId, code);</span><br><span class="line">    System.out.println(<span class="string">&quot;code--&gt;&gt;&quot;</span> + code);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> JsonData.buildSuccess(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="QywxInnerService-java-1"   >
+          <a href="#QywxInnerService-java-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#QywxInnerService-java-1" class="headerlink" title="QywxInnerService.java"></a><code>QywxInnerService.java</code></h5>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map <span class="title">getOauthUser</span><span class="params">(String corpId, String code)</span> </span>&#123;</span><br><span class="line">    String accessToken = getAccessToken(corpId);</span><br><span class="line">    String getOauthUrl = String.format(qywxInnerConfig.getOauthUserUrl(), accessToken, code);</span><br><span class="line">    Map response = RestUtils.get(getOauthUrl);</span><br><span class="line">    <span class="keyword">if</span> (response.containsKey(<span class="string">&quot;errcode&quot;</span>) &amp;&amp; (Integer) response.get(<span class="string">&quot;errcode&quot;</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        logger.error(response.toString());</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// return  response;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取通讯录用户详情get</span></span><br><span class="line">    String userId = (String) response.get(<span class="string">&quot;UserId&quot;</span>);</span><br><span class="line">    String url = String.format(qywxInnerConfig.getUserDetailUrl(), accessToken, userId);</span><br><span class="line">    Map detaiResponse = RestUtils.get(url);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取错误日志</span></span><br><span class="line">    <span class="keyword">if</span> (detaiResponse.containsKey(<span class="string">&quot;errcode&quot;</span>) &amp;&amp; (Integer) detaiResponse.get(<span class="string">&quot;errcode&quot;</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        logger.error(detaiResponse.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> detaiResponse;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getAccessToken</span><span class="params">(String corpId)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    QywxInnerCompany qywxInnerCompany = qywxInnerCompanyService.getCorpId(<span class="number">1</span>);</span><br><span class="line">    String agentSecret = qywxInnerCompany.getAgentSecret();</span><br><span class="line"></span><br><span class="line">    String accessTokenUrl = String.format(qywxInnerConfig.getAccessTokenUrl(), corpId, agentSecret);</span><br><span class="line">    Map response = RestUtils.get(accessTokenUrl);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取错误日志</span></span><br><span class="line">    <span class="keyword">if</span> (response.containsKey(<span class="string">&quot;errcode&quot;</span>) &amp;&amp; (Integer) response.get(<span class="string">&quot;errcode&quot;</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        logger.error(response.toString());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result = (String) response.get(<span class="string">&quot;access_token&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="前端构造第三方登录界面"   >
+          <a href="#前端构造第三方登录界面" class="heading-link"><i class="fas fa-link"></i></a><a href="#前端构造第三方登录界面" class="headerlink" title="前端构造第三方登录界面"></a>前端构造第三方登录界面</h4>
+      
+        <h5 id="user-js"   >
+          <a href="#user-js" class="heading-link"><i class="fas fa-link"></i></a><a href="#user-js" class="headerlink" title="user.js"></a><code>user.js</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单点登录</span></span><br><span class="line"><span class="function"><span class="title">SingleLogin</span>(<span class="params">&#123; commit &#125;, userInfo</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> userId = userInfo.userId;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    singleLogin(userId).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      setToken(res.token)</span><br><span class="line">      commit(<span class="string">&#x27;SET_TOKEN&#x27;</span>, res.token)</span><br><span class="line">      resolve()</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      reject(error)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="auth-js-2"   >
+          <a href="#auth-js-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#auth-js-2" class="headerlink" title="auth.js"></a><code>auth.js</code></h5>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">singleLogin</span>(<span class="params">userId</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> data = &#123;</span><br><span class="line">    userId</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    url: <span class="string">&#x27;/h5/singleLogin/&#x27;</span> + userId,</span><br><span class="line">    method: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    params: data</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="H5Controller-java-2"   >
+          <a href="#H5Controller-java-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#H5Controller-java-2" class="headerlink" title="H5Controller.java"></a><code>H5Controller.java</code></h5>
+      <figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/h5/singleLogin/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">socialLogin</span><span class="params">(<span class="meta">@PathVariable(&quot;userId&quot;)</span> String userId, AuthCallback callback, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    SysUser user = userService.selectUserByUserName(userId);</span><br><span class="line">    <span class="comment">// 查数据库获取人员</span></span><br><span class="line">    LoginUser loginUser = <span class="keyword">new</span> LoginUser(user.getUserId(), user.getDeptId(), user, permissionService.getMenuPermission(user));</span><br><span class="line">    String token = tokenService.createToken(loginUser);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> success().put(Constants.TOKEN, token);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h5 id="SingleLogin-vue"   >
+          <a href="#SingleLogin-vue" class="heading-link"><i class="fas fa-link"></i></a><a href="#SingleLogin-vue" class="headerlink" title="SingleLogin.vue"></a><code>SingleLogin.vue</code></h5>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;Loading&#125; from &#39;element-ui&#39;</span><br><span class="line">import &#123;oauthUser&#125; from &quot;@&#x2F;api&#x2F;system&#x2F;auth&quot;;</span><br><span class="line"></span><br><span class="line">let loadingInstance;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      redirect: undefined,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    loadingInstance &#x3D; Loading.service(&#123;</span><br><span class="line">      lock: true,</span><br><span class="line">      text: &quot;正在验证第三方应用账户数据，请稍候&quot;,</span><br><span class="line">      spinner: &quot;el-icon-loading&quot;,</span><br><span class="line">      background: &quot;rgba(0, 0, 0, 0.7)&quot;,</span><br><span class="line">    &#125;)</span><br><span class="line">    &#x2F;&#x2F; 第三方登录回调参数</span><br><span class="line">    oauthUser(this.$route.query).then((res) &#x3D;&gt; &#123;</span><br><span class="line">      this.$store.dispatch(&quot;SingleLogin&quot;, &#123;</span><br><span class="line">        userId: res.data.userid</span><br><span class="line">      &#125;).then(() &#x3D;&gt; &#123;</span><br><span class="line">        loadingInstance.close();</span><br><span class="line">        console.log(&#39;res.data.userid:&#39;, res.data.userid);</span><br><span class="line">        this.$router.push(&#123;</span><br><span class="line">          path: this.redirect || &quot;&#x2F;&quot;,</span><br><span class="line">          params: &#123;</span><br><span class="line">            data: &#39;true&#39;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;).catch(() &#x3D;&gt; &#123;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;).catch(() &#x3D;&gt; &#123;</span><br><span class="line">        loadingInstance.close();</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style rel&#x3D;&quot;stylesheet&#x2F;scss&quot; lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="效果"   >
+          <a href="#效果" class="heading-link"><i class="fas fa-link"></i></a><a href="#效果" class="headerlink" title="效果"></a>效果</h3>
+      <p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="https://s2.loli.net/2022/11/22/9POBjKZRu2kzVA1.gif"  alt="企业微信单点登录">
+      </p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://garfielder.com">Garfield</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://garfielder.com/post/1362ebbb.html">http://garfielder.com/post/1362ebbb.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/%E8%8B%A5%E4%BE%9D/">若依</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1/">企业微信</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://garfielder.com/tags/OAuth2/">OAuth2</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/post/18f95f82.html"><span class="paginator-prev__text">Ubuntu安装和配置Nginx</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">
+          背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">
+          开发前准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">
+          调用流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%89%8D%E5%87%86%E5%A4%87-1"><span class="toc-number">2.2.</span> <span class="toc-text">
+          开发前准备</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E4%BF%A1%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          可信域名申请</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+          构造网页授权链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%AF%E4%BF%A1%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+          设置可信域名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">
+          代码开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AF%B7%E6%B1%82"><span class="toc-number">3.1.</span> <span class="toc-text">
+          构造第一次请求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#login-vue"><span class="toc-number">3.1.1.</span> <span class="toc-text">
+          login.vue</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#auth-js"><span class="toc-number">3.1.2.</span> <span class="toc-text">
+          auth.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#H5Controller-java"><span class="toc-number">3.1.3.</span> <span class="toc-text">
+          H5Controller.java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#QywxInnerService-java"><span class="toc-number">3.1.4.</span> <span class="toc-text">
+          QywxInnerService.java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#QywxInnerConfig-java"><span class="toc-number">3.1.5.</span> <span class="toc-text">
+          QywxInnerConfig.java</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AF%B7%E6%B1%82"><span class="toc-number">3.2.</span> <span class="toc-text">
+          构造第二次请求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#login-vue-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">
+          login.vue</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#auth-js-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">
+          auth.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#H5Controller-java-1"><span class="toc-number">3.2.3.</span> <span class="toc-text">
+          H5Controller.java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#QywxInnerService-java-1"><span class="toc-number">3.2.4.</span> <span class="toc-text">
+          QywxInnerService.java</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%9E%84%E9%80%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2"><span class="toc-number">3.3.</span> <span class="toc-text">
+          前端构造第三方登录界面</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#user-js"><span class="toc-number">3.3.1.</span> <span class="toc-text">
+          user.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#auth-js-2"><span class="toc-number">3.3.2.</span> <span class="toc-text">
+          auth.js</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#H5Controller-java-2"><span class="toc-number">3.3.3.</span> <span class="toc-text">
+          H5Controller.java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SingleLogin-vue"><span class="toc-number">3.3.4.</span> <span class="toc-text">
+          SingleLogin.vue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">
+          效果</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://i.loli.net/2021/03/09/b1rHUNsg9GdK2S5.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Stay hungry. Stay foolish.</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/GarfieldCCC" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/e8214c6701c6" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://segmentfault.com/u/garfield_598ab2e99b0c5" target="_blank" rel="noopener" data-popover="思否" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">sf</span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/people/garfield-21-38" target="_blank" rel="noopener" data-popover="知乎" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Garfield</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js" color="0,0,0" opacity="0.6" count="99" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'http://garfielder.com/post/1362ebbb.html', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script></div><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script data-pjax="">function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: '7QW51uURwmFEJVmXD4UC943o-gzGzoHsz',
+    appKey: 'UTbCV1BcSh71YxpBEu7wG05I',
+    notify: true,
+    verify: true,
+    placeholder: 'Comment...',
+    avatar: 'mp',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: '' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (true) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
