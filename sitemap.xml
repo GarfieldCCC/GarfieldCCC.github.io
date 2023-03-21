@@ -956,7 +956,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/onlyoffice/</loc>
+    <loc>http://garfielder.com/tags/firewalld/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -977,14 +977,7 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/firewalld/</loc>
-    <lastmod>2023-03-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://garfielder.com/tags/Docker/</loc>
+    <loc>http://garfielder.com/tags/onlyoffice/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -992,6 +985,13 @@
   
   <url>
     <loc>http://garfielder.com/tags/MySQL/</loc>
+    <lastmod>2023-03-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://garfielder.com/tags/Docker/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1292,14 +1292,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/mstsc/</loc>
+    <loc>http://garfielder.com/tags/putty/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/tags/putty/</loc>
+    <loc>http://garfielder.com/tags/mstsc/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1455,14 +1455,14 @@
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/Docker/</loc>
+    <loc>http://garfielder.com/categories/MySQL/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://garfielder.com/categories/MySQL/</loc>
+    <loc>http://garfielder.com/categories/Docker/</loc>
     <lastmod>2023-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
